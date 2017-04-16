@@ -16,7 +16,7 @@ import vlfsoft.common.annotations.design.patterns.SoftwareDesignPattern;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.METHOD})
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.LOCAL_VARIABLE})
 public @interface EtcShorthandPattern {
 
 }

@@ -40,4 +40,14 @@ public @interface Layer {
 
     }
 
+    /**
+     */
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE})
+    @interface ServiceLayer {
+
+    }
+
 }

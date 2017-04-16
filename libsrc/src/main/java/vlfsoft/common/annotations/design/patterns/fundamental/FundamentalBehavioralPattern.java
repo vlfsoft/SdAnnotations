@@ -17,6 +17,7 @@ import vlfsoft.common.annotations.design.patterns.SoftwareDesignPattern;
 public @interface FundamentalBehavioralPattern {
     /**
      * See <a href="https://en.wikipedia.org/wiki/Delegation_pattern">Delegation pattern</a>
+     * allows object composition to achieve the same code reuse as inheritance
      */
     @SoftwareDesignPattern.Behavioral
     @Documented

@@ -52,7 +52,9 @@ public @interface BehavioralPattern {
     }
 
     /**
-     * See <a href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern">Command pattern</a>
+     * See <a href="https://en.wikipedia.org/wiki/Command_pattern">Command pattern</a>
+     * An object is used to encapsulate all information needed to perform an action or trigger an event at a later time.
+     * This information includes the method name, the object that owns the method and values for the method parameters.
      */
     @Documented
     @Inherited
@@ -63,6 +65,8 @@ public @interface BehavioralPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategy pattern</a>
+     * enables an algorithm's behavior to be selected at runtime.
+     * defines a family of algorithms, encapsulates each algorithm, and makes the algorithms interchangeable within that family.
      */
     @Documented
     @Inherited

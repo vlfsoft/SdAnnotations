@@ -11,6 +11,11 @@ import vlfsoft.common.annotations.design.patterns.SoftwareDesignPattern;
 
 /**
  * See <a href="https://en.wikipedia.org/wiki/Structural_pattern">Structural pattern</a>
+ *
+ * See <a href="https://en.wikipedia.org/wiki/Decorator_pattern">Decorator pattern</a>
+ * {@link Adapter} Converts one interface to another so that it matches what the client is expecting
+ * {@link Decorator} Dynamically adds responsibility to the interface by wrapping the original code
+ * {@link Facade} Provides a simplified interface
  */
 @SoftwareDesignPattern.Structural
 @Documented
@@ -18,6 +23,7 @@ import vlfsoft.common.annotations.design.patterns.SoftwareDesignPattern;
 @Retention(RetentionPolicy.SOURCE)
 @Target({ElementType.TYPE, ElementType.FIELD})
 public @interface StructuralPattern {
+
     /**
      * See <a href="https://en.wikipedia.org/wiki/Composite_pattern">Composite pattern</a>
      */
