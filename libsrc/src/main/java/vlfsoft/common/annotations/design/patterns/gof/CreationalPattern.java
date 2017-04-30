@@ -21,6 +21,37 @@ public @interface CreationalPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Abstract_factory_pattern">Abstract factory pattern</a>
+     * a factory class which has a method that returns different types of object based on given input
+     */
+    @SoftwareDesignPattern.Creational
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.METHOD})
+    @interface SimpleFactory {
+    }
+
+    /**
+     * See <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">Factory method pattern</a>
+     * creational pattern that uses factory methods to deal with the problem of creating objects
+     * without having to specify the exact class of the object that will be created.
+     * This is done by creating objects by calling a factory method—either specified in an interface
+     * and implemented by child classes, or implemented in a base class and optionally overridden
+     * by derived classes—rather than by calling a constructor.
+     *
+     * Define an interface for creating an object, but let subclasses decide which class to instantiate.
+     * Factory Method lets a class defer instantiation to subclasses
+     */
+    @SoftwareDesignPattern.Creational
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.METHOD})
+    @interface FactoryMethod {
+    }
+
+    /**
+     * See <a href="https://en.wikipedia.org/wiki/Abstract_factory_pattern">Abstract factory pattern</a>
      * provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.
      * In normal usage, the client software creates a concrete implementation of the abstract factory and then uses the generic interface
      * of the factory to create the concrete objects that are part of the theme.
@@ -35,22 +66,6 @@ public @interface CreationalPattern {
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.METHOD})
     @interface AbstractFactory {
-    }
-
-    /**
-     * See <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">Factory method pattern</a>
-     * creational pattern that uses factory methods to deal with the problem of creating objects
-     * without having to specify the exact class of the object that will be created.
-     * This is done by creating objects by calling a factory method—either specified in an interface
-     * and implemented by child classes, or implemented in a base class and optionally overridden
-     * by derived classes—rather than by calling a constructor.
-     */
-    @SoftwareDesignPattern.Creational
-    @Documented
-    @Inherited
-    @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.METHOD})
-    @interface FactoryMethod {
     }
 
     /**

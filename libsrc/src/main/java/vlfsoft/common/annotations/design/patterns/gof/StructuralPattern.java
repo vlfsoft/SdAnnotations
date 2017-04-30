@@ -128,8 +128,91 @@ public @interface StructuralPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @Target({ElementType.TYPE})
     @interface Bridge {
+
+        @SoftwareDesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @interface Abstraction {
+            @SoftwareDesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @interface Refined {
+            }
+        }
+
+        @SoftwareDesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @interface Implementor  {
+            @SoftwareDesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @interface Concrete {
+            }
+        }
+
+    }
+
+    /**
+     * See <a href="https://en.wikipedia.org/wiki/Flyweight_pattern">Flyweight pattern</a>
+     * A flyweight is an object that minimizes memory usage by sharing as much data as possible with other similar objects;
+     * it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
+     * Often some parts of the object state can be shared, and it is common practice to hold them in external data structures and
+     * pass them to the flyweight objects temporarily when they are used.
+     */
+    @SoftwareDesignPattern.Structural
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD})
+    @interface Flyweight {
+
+        /**
+         * Factory to produce new and re-use existing Flyweight from internal cache
+         */
+        @SoftwareDesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @interface Factory {
+        }
+
+        /**
+         *  The state-dependent (extrinsic) part.
+         *  Extrinsic state is stored or computed by client objects, and passed to the Flyweight when its operations are invoked.
+         */
+        @SoftwareDesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @interface Extrinsic {
+        }
+
+        /**
+         *  The state-independent (intrinsic) part.
+         *  Intrinsic state is stored (shared) in the Flyweight object.
+         */
+        @SoftwareDesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @interface Intrinsic {
+        }
+
+
     }
 
 }
