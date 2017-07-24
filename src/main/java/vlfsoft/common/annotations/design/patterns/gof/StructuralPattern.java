@@ -55,6 +55,15 @@ public @interface StructuralPattern {
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD})
     @interface Facade {
+
+        @SoftwareDesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @interface Subsystem {
+
+        }
     }
 
     /**

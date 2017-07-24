@@ -36,6 +36,7 @@ public @interface EtcCreationalPattern {
      * Instance of class can't be created with new.
      * Instance of class can't be created with @FactoryMethod.
      * Empty private constructor prevent creating instances of class with new.
+     * contains only static methods.
      */
     @SoftwareDesignPattern.Creational
     @Documented

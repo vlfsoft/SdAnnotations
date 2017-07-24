@@ -31,6 +31,7 @@ public @interface ObjectComposition {
     }
 
     /**
+     * See <a href="https://dzone.com/articles/aggregate-pattern">Aggregate Pattern</a>
      * Aggregation is a kind of association that specifies a whole/part relationship between the aggregate (whole) and component part.
      * This relationship between the aggregate and component is a weak “has a” relationship, as the component may survive the aggregate object.
      */
