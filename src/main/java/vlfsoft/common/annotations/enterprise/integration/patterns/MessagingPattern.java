@@ -1,4 +1,4 @@
-package vlfsoft.common.annotations.design.patterns.jee;
+package vlfsoft.common.annotations.enterprise.integration.patterns;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -7,7 +7,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import vlfsoft.common.annotations.design.patterns.SoftwareDesignPattern;
+import vlfsoft.common.annotations.design.DesignPattern;
 
 /**
  *
@@ -15,7 +15,6 @@ import vlfsoft.common.annotations.design.patterns.SoftwareDesignPattern;
  * See <a href="https://en.wikipedia.org/wiki/Messaging_pattern">Messaging pattern</a>
  *
  */
-@SoftwareDesignPattern.Creational
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
@@ -27,7 +26,7 @@ public @interface MessagingPattern {
      * See <a href="http://stackoverflow.com/questions/7793927/message-queue-vs-message-bus-what-are-the-differences">Message Queue vs Message Bus — what are the differences?</a>
      *
      */
-    @SoftwareDesignPattern
+    @DesignPattern
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
@@ -40,7 +39,7 @@ public @interface MessagingPattern {
      * See <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageBus.html">Message bus</a>
      * See <a href="http://stackoverflow.com/questions/7793927/message-queue-vs-message-bus-what-are-the-differences">Message Queue vs Message Bus — what are the differences?</a>
      */
-    @SoftwareDesignPattern
+    @DesignPattern
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)

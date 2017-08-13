@@ -1,4 +1,6 @@
-package vlfsoft.common.annotations.design.patterns.gof;
+package vlfsoft.common.annotations.design.patterns;
+
+import vlfsoft.common.annotations.design.DesignPattern;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -17,12 +19,41 @@ import java.lang.annotation.Target;
 public @interface BehavioralPattern {
 
     /**
+     * See <a href="https://en.wikipedia.org/wiki/Delegation_pattern">Delegation pattern</a>
+     * allows object composition to achieve the same code reuse as inheritance
+     */
+    @DesignPattern.Behavioral
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.CONSTRUCTOR})
+    @DesignPattern.Fundamental
+    @interface Delegation {
+    }
+
+    /**
+     * The holder pattern is used for providing fast access to an object.
+     * Holder object keeps (caches) reference to the object. It allows to avoid slow access (calling one or more methods and etc.) to access the object.
+     * Android ViewHolder pattern allows to avoid calling Menu#findItem, Activity#findViewById
+     * <a href="android.view.Menu#findItem">Menu.findItem</a> method.
+     */
+    @DesignPattern.Behavioral
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.FIELD})
+    @DesignPattern.Fundamental
+    @interface Holder {
+    }
+
+    /**
      * See <a href="https://en.wikipedia.org/wiki/Mediator_pattern">Mediator pattern</a>
      */
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @DesignPattern.GOF
     @interface Mediator {
     }
 
@@ -38,6 +69,7 @@ public @interface BehavioralPattern {
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @DesignPattern.GOF
     @interface State {
 
         /**
@@ -50,6 +82,7 @@ public @interface BehavioralPattern {
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
         @interface Context {
         }
     }
@@ -61,6 +94,7 @@ public @interface BehavioralPattern {
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @DesignPattern.GOF
     @interface ChainOfResponsibility {
     }
 
@@ -73,6 +107,7 @@ public @interface BehavioralPattern {
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @DesignPattern.GOF
     @interface Command {
     }
 
@@ -85,6 +120,7 @@ public @interface BehavioralPattern {
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @DesignPattern.GOF
     @interface Strategy {
     }
 
@@ -98,7 +134,8 @@ public @interface BehavioralPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.METHOD})
+    @Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
+    @DesignPattern.GOF
     @interface TemplateMethod {
     }
 
@@ -112,6 +149,7 @@ public @interface BehavioralPattern {
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @DesignPattern.GOF
     @interface Visitor {
 
         @Documented

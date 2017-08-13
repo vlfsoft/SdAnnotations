@@ -1,4 +1,4 @@
-package vlfsoft.common.annotations.design.patterns.gof;
+package vlfsoft.common.annotations.design.patterns;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -7,17 +7,24 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import vlfsoft.common.annotations.design.patterns.SoftwareDesignPattern;
+import vlfsoft.common.annotations.design.DesignPattern;
 
 /**
  * See <a href="https://en.wikipedia.org/wiki/Structural_pattern">Structural pattern</a>
+ *
+ * An adapter can be used when the wrapper must respect a particular interface and must support polymorphic behavior. Alternatively, a decorator makes it possible to add or alter behavior of an interface at run-time, and a Facade is used when an easier or simpler interface to an underlying object is desired.[2]
+ * Pattern	Intent
+ * Adapter or Wrapper	Converts one interface to another so that it matches what the client is expecting
+ * Decorator	Dynamically adds responsibility to the interface by wrapping the original code
+ * Delegation	Support "composition over inheritance"
+ * Facade	Provides a simplified interface
  *
  * See <a href="https://en.wikipedia.org/wiki/Decorator_pattern">Decorator pattern</a>
  * {@link Adapter} Converts one interface to another so that it matches what the client is expecting
  * {@link Decorator} Dynamically adds responsibility to the interface by wrapping the original code
  * {@link Facade} Provides a simplified interface
  */
-@SoftwareDesignPattern.Structural
+@DesignPattern.Structural
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
@@ -27,40 +34,53 @@ public @interface StructuralPattern {
     /**
      * See <a href="https://en.wikipedia.org/wiki/Composite_pattern">Composite pattern</a>
      */
-    @SoftwareDesignPattern.Structural
+    @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD})
+    @DesignPattern.GOF
     @interface Composite {
     }
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Proxy_pattern">Proxy_pattern</a>
      */
-    @SoftwareDesignPattern.Structural
+    @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD})
+    @DesignPattern.GOF
     @interface Proxy {
+
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
+        @interface RealObject {
+        }
     }
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Facade_pattern">Facade pattern</a>
      */
-    @SoftwareDesignPattern.Structural
+    @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD})
+    @DesignPattern.GOF
     @interface Facade {
 
-        @SoftwareDesignPattern.Structural
+        @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
         @interface Subsystem {
 
         }
@@ -75,11 +95,12 @@ public @interface StructuralPattern {
      * The decorator pattern is often useful for adhering to the Single Responsibility Principle,
      * as it allows functionality to be divided between classes with unique areas of concern.
      */
-    @SoftwareDesignPattern.Structural
+    @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.METHOD})
+    @DesignPattern.GOF
     @interface Decorator {
     }
 
@@ -92,11 +113,12 @@ public @interface StructuralPattern {
      * that allows the interface of an existing class to be used as another interface.[1]
      * It is often used to make existing classes work with others without modifying their source code.
      */
-    @SoftwareDesignPattern.Structural
+    @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD})
+    @DesignPattern.GOF
     @interface Adapter {
         /**
          * In this adapter pattern, the adapter contains an instance of the class it wraps.
@@ -106,6 +128,7 @@ public @interface StructuralPattern {
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
         @interface ObjectAdapter {
         }
 
@@ -120,6 +143,7 @@ public @interface StructuralPattern {
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
         @interface ClassAdapter {
         }
 
@@ -133,41 +157,50 @@ public @interface StructuralPattern {
      * The bridge pattern is often confused with the adapter pattern.
      * In fact, the bridge pattern is often implemented using the class {@link Adapter.ClassAdapter}
      */
-    @SoftwareDesignPattern.Structural
+    @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE})
+    @DesignPattern.GOF
     @interface Bridge {
 
-        @SoftwareDesignPattern.Structural
+        @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE})
+        @DesignPattern.GOF
         @interface Abstraction {
-            @SoftwareDesignPattern.Structural
+
+            @DesignPattern.Structural
             @Documented
             @Inherited
             @Retention(RetentionPolicy.SOURCE)
             @Target({ElementType.TYPE})
+            @DesignPattern.GOF
             @interface Refined {
             }
+
         }
 
-        @SoftwareDesignPattern.Structural
+        @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE})
+        @DesignPattern.GOF
         @interface Implementor  {
-            @SoftwareDesignPattern.Structural
+
+            @DesignPattern.Structural
             @Documented
             @Inherited
             @Retention(RetentionPolicy.SOURCE)
             @Target({ElementType.TYPE})
+            @DesignPattern.GOF
             @interface Concrete {
             }
+
         }
 
     }
@@ -179,21 +212,23 @@ public @interface StructuralPattern {
      * Often some parts of the object state can be shared, and it is common practice to hold them in external data structures and
      * pass them to the flyweight objects temporarily when they are used.
      */
-    @SoftwareDesignPattern.Structural
+    @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD})
+    @DesignPattern.GOF
     @interface Flyweight {
 
         /**
          * Factory to produce new and re-use existing Flyweight from internal cache
          */
-        @SoftwareDesignPattern.Structural
+        @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
         @interface Factory {
         }
 
@@ -201,11 +236,12 @@ public @interface StructuralPattern {
          *  The state-dependent (extrinsic) part.
          *  Extrinsic state is stored or computed by client objects, and passed to the Flyweight when its operations are invoked.
          */
-        @SoftwareDesignPattern.Structural
+        @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
         @interface Extrinsic {
         }
 
@@ -213,15 +249,28 @@ public @interface StructuralPattern {
          *  The state-independent (intrinsic) part.
          *  Intrinsic state is stored (shared) in the Flyweight object.
          */
-        @SoftwareDesignPattern.Structural
+        @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
         @interface Intrinsic {
         }
 
 
     }
 
+    /**
+     *  Reduces quantity of code to access variable.
+     */
+    @DesignPattern.Structural
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.METHOD, ElementType.FIELD, ElementType.LOCAL_VARIABLE})
+    @DesignPattern.ETC
+    @interface EtcShorthandPattern {
+
+    }
 }

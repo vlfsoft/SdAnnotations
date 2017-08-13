@@ -18,5 +18,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.SOURCE)
 @Target({ElementType.TYPE})
 public @interface SingleResponsibility {
+    /**
+     * Contains the description of a single part of the functionality provided by the software, that class is responsible over.
+     */
     String over();
 }

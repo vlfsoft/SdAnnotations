@@ -1,4 +1,4 @@
-package vlfsoft.common.annotations.design.patterns;
+package vlfsoft.common.annotations.design;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
 @Target({ElementType.TYPE})
-public @interface SoftwareDesignPattern {
+public @interface DesignPattern {
 
     @Documented
     @Inherited
@@ -42,6 +42,27 @@ public @interface SoftwareDesignPattern {
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE})
     @interface Concurrency {
+    }
+
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE})
+    @interface Fundamental {
+    }
+
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE})
+    @interface GOF {
+    }
+
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE})
+    @interface ETC {
     }
 
 }
