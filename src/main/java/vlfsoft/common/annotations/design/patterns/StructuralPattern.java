@@ -45,6 +45,7 @@ public @interface StructuralPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Proxy_pattern">Proxy_pattern</a>
+     * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
      */
     @DesignPattern.Structural
     @Documented
@@ -53,6 +54,62 @@ public @interface StructuralPattern {
     @Target({ElementType.TYPE, ElementType.FIELD})
     @DesignPattern.GOF
     @interface Proxy {
+
+        /**
+         * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
+         * A virtual proxy is a placeholder for "expensive to create" objects. The real object is only created when a client first requests/accesses the object.
+         */
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
+        @interface Virtual {
+        }
+
+        /**
+         * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
+         * A remote proxy provides a local representative for an object that resides in a different address space. This is what the "stub" code in RPC and CORBA provides.
+         */
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
+        @interface Remote {
+        }
+
+        /**
+         * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
+         * A protective proxy controls access to a sensitive master object. The "surrogate" object checks that the caller has the access permissions required prior to forwarding the request.
+         */
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
+        @interface Protective {
+        }
+
+        /**
+         * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
+         * A smart proxy interposes additional actions when an object is accessed. Typical uses include:<ul>
+         * <li> Counting the number of references to the real object so that it can be freed automatically when there are no more references (aka smart pointer),
+         * <li> Loading a persistent object into memory when it's first referenced,
+         * <li> Checking that the real object is locked before it is accessed to ensure that no other object can change it.
+         * </ul>
+         */
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
+        @interface Smart {
+        }
 
         @DesignPattern.Structural
         @Documented
