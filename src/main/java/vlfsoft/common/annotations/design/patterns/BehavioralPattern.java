@@ -101,14 +101,109 @@ public @interface BehavioralPattern {
     /**
      * See <a href="https://en.wikipedia.org/wiki/Command_pattern">Command pattern</a>
      * An object is used to encapsulate all information needed to perform an action or trigger an event at a later time.
-     * This information includes the method name, the object that owns the method and values for the method parameters.
+     * This information includes the {@link Method} name, {@link Receiver} - the object that owns the method and {@link ParameterValues} - values for the method parameters.
+     * Four terms always associated with the command pattern are {@link Command}, {@link Receiver}, {@link Invoker} and {@link Client}.
+     * A {@link Command} object knows about {@link Receiver} and invokes a {@link Method} or several {@link Method} of the {@link Receiver}.
+     * {@link ParameterValues} - values for parameters of the {@link Receiver} {@link Method} are stored in the {@link Command},
+     * the {@link Receiver} object to execute these {@link Method}-methods is also stored in the {@link Command} object by {@link vlfsoft.common.annotations.design.principles.ObjectComposition.Aggregation}.
+     * The {@link Receiver} then does the work when the {@link Execute}() method in {@link Command} is called.
+     * An {@link Invoker} object knows how to execute a {@link Command}, and optionally does bookkeeping about the {@link Command} execution.
+     * The {@link Invoker} does not know anything about a concrete command, it knows only about command interface.
+     * {@link Invoker} object(s), {@link Command} objects and {@link Receiver} objects are held by a {@link Client} object,
+     * the {@link Client} decides which {@link Receiver} objects it assigns to the {@link Command} objects,
+     * and which {@link Command}s it assigns to the {@link Invoker}.
+     * The {@link Client} decides which {@link Command}s to execute at which points. To execute a {@link Command}, it passes the {@link Command} object to the {@link Invoker} object.
      */
+    @DesignPattern.Behavioral
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @Target({ElementType.TYPE})
     @DesignPattern.GOF
     @interface Command {
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.GOF
+        @interface Abstraction {
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.GOF
+        @interface Implementation {
+
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Generic {
+            }
+
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Concrete {
+            }
+
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+        @DesignPattern.GOF
+        @interface ParameterValues {
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.METHOD})
+        @DesignPattern.GOF
+        @interface Execute {
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD, ElementType.PARAMETER})
+        @DesignPattern.GOF
+        @interface Receiver {
+
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.FIELD, ElementType.METHOD})
+            @DesignPattern.GOF
+            @interface Method {
+            }
+
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+        @DesignPattern.GOF
+        @interface Invoker {
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD})
+        @DesignPattern.GOF
+        @interface Client {
+        }
+
     }
 
     /**

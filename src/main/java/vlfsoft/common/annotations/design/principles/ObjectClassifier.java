@@ -28,8 +28,8 @@ public @interface ObjectClassifier {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Value_object">Value object</a>
-     *  small object that represents a simple entity whose equality is not based on identity:
-     *  i.e. two value objects are equal when they have the same value, not necessarily being the same object.
+     * small object that represents a simple entity whose equality is not based on identity:
+     * i.e. two value objects are equal when they have the same value, not necessarily being the same object.
      * See <a href="https://dzone.com/articles/value-objects">Value Objects</a>
      */
     @Documented
@@ -62,6 +62,30 @@ public @interface ObjectClassifier {
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE, ElementType.FIELD})
     @interface DTO {
+    }
+
+    /**
+     * See <a href="https://en.wikipedia.org/wiki/Immutable_object">Immutable object</a>
+     * object whose state cannot be modified after it is created.
+     * In some cases, an object is considered immutable even if some internally used attributes change but the object's state appears to be unchanging from an external point of view.
+     * For example, an object that uses memoization to cache the results of expensive computations could still be considered an immutable object.
+     */
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD})
+    @interface ImmutableObject {
+    }
+
+    /**
+     * See <a href="https://en.wikipedia.org/wiki/Immutable_object">Immutable object</a>
+     * (changeable object), which can be modified after it is created
+     */
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD})
+    @interface MutableObject {
     }
 
 }

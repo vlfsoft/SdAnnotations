@@ -247,7 +247,16 @@ public @interface StructuralPattern {
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE})
         @DesignPattern.GOF
-        @interface Implementor  {
+        @interface Implementation {
+
+            @DesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Generic {
+            }
 
             @DesignPattern.Structural
             @Documented
@@ -327,7 +336,23 @@ public @interface StructuralPattern {
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.METHOD, ElementType.FIELD, ElementType.LOCAL_VARIABLE})
     @DesignPattern.ETC
-    @interface EtcShorthandPattern {
-
+    @interface ShorthandPattern {
     }
+
+    /**
+     * See <a href="https://sourcemaking.com/design_patterns/private_class_data">Private Class Data</a>
+     * Control write access to class attributes
+     * Separate data from methods that use it
+     * Encapsulate class data initialization
+     * Providing new type of final - final after constructor
+     */
+    @DesignPattern.Structural
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.FIELD})
+    @DesignPattern.ETC
+    @interface PrivateClassData {
+    }
+
 }
