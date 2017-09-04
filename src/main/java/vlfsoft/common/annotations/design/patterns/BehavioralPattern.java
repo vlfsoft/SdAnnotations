@@ -101,11 +101,12 @@ public @interface BehavioralPattern {
     /**
      * See <a href="https://en.wikipedia.org/wiki/Command_pattern">Command pattern</a>
      * An object is used to encapsulate all information needed to perform an action or trigger an event at a later time.
-     * This information includes the {@link Method} name, {@link Receiver} - the object that owns the method and {@link ParameterValues} - values for the method parameters.
+     * This information includes the {@link Receiver.Method} name, {@link Receiver} - the object that owns the method and {@link ParameterValues} - values for the method parameters.
      * Four terms always associated with the command pattern are {@link Command}, {@link Receiver}, {@link Invoker} and {@link Client}.
-     * A {@link Command} object knows about {@link Receiver} and invokes a {@link Method} or several {@link Method} of the {@link Receiver}.
-     * {@link ParameterValues} - values for parameters of the {@link Receiver} {@link Method} are stored in the {@link Command},
-     * the {@link Receiver} object to execute these {@link Method}-methods is also stored in the {@link Command} object by {@link vlfsoft.common.annotations.design.principles.ObjectComposition.Aggregation}.
+     * A {@link Command} object knows about {@link Receiver} and invokes a {@link Receiver.Method} or several {@link Receiver.Method} of the {@link Receiver}.
+     * {@link ParameterValues} - values for parameters of the {@link Receiver} {@link Receiver.Method} are stored in the {@link Command},
+     * the {@link Receiver} object to execute these {@link Receiver.Method}-methods is also stored
+     * in the {@link Command} object by {@link vlfsoft.common.annotations.design.principles.ObjectComposition.Aggregation}.
      * The {@link Receiver} then does the work when the {@link Execute}() method in {@link Command} is called.
      * An {@link Invoker} object knows how to execute a {@link Command}, and optionally does bookkeeping about the {@link Command} execution.
      * The {@link Invoker} does not know anything about a concrete command, it knows only about command interface.
