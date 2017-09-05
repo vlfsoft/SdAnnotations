@@ -1,5 +1,7 @@
 package vlfsoft.common.annotations.design.principles;
 
+import vlfsoft.common.annotations.design.DesignPattern;
+
 import java.lang.annotation.*;
 
 /**
@@ -74,7 +76,12 @@ public @interface SOLID {
      * When following this principle, the conventional dependency relationships established from high-level, policy-setting modules to low-level, dependency modules are reversed,
      * thus rendering high-level modules independent of the low-level module implementation details. The principle states:<ul>
      * <li> High-level modules should not depend on low-level modules. Both should depend on abstractions.
+     * Java:
+     * {@link Implementation.HighLevelModule} class should not contain fields with type {@link Implementation.LowLevelModule}.
+     * {@link Implementation.HighLevelModule} class should contain fields with type {@link Abstraction} only.
      * <li> Abstractions should not depend on details. Details should depend on abstractions.
+     * Java:
+     * {@link Implementation} class implements/extends {@link Abstraction}
      * </ul>
      * This design principle inverts the way some people may think about object-oriented programming, dictating that both high- and low-level objects must depend on the same abstraction.
      */
@@ -83,6 +90,48 @@ public @interface SOLID {
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.TYPE})
     @interface DI {
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @interface Abstraction {
+
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Refined {
+            }
+
+        }
+
+        /**
+         * details
+         */
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @interface Implementation {
+
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @interface HighLevelModule {
+            }
+
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @interface LowLevelModule {
+            }
+
+        }
+
     }
 
 }

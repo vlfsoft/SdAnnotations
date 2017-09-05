@@ -1,13 +1,8 @@
 package vlfsoft.common.annotations.design.patterns;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 import vlfsoft.common.annotations.design.DesignPattern;
+
+import java.lang.annotation.*;
 
 /**
  * See <a href="https://en.wikipedia.org/wiki/Structural_pattern">Structural pattern</a>
@@ -52,6 +47,12 @@ public @interface StructuralPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Proxy_pattern">Proxy_pattern</a>
+     * a class functioning as an interface to something else.
+     * The proxy could interface to anything: a network connection, a large object in memory, a file, or some other resource that is expensive or impossible to duplicate.
+     * In short, a proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes.
+     * Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy, extra functionality can be provided,
+     * for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+     * For the client, usage of a proxy object is similar to using the real object, because both implement the same interface.
      * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
      */
     @DesignPattern.Structural
@@ -62,7 +63,19 @@ public @interface StructuralPattern {
     @DesignPattern.GOF
     @interface Proxy {
 
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.GOF
+        @interface Abstraction {
+        }
+
         /**
+         * See <a href="https://en.wikipedia.org/wiki/Proxy_pattern">Proxy_pattern</a>
+         * In place of a complex or heavy object, a skeleton representation may be advantageous in some cases.
+         * When an underlying image is huge in size, it may be represented using a virtual proxy object, loading the real object on demand.
          * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
          * A virtual proxy is a placeholder for "expensive to create" objects. The real object is only created when a client first requests/accesses the object.
          */
@@ -76,6 +89,10 @@ public @interface StructuralPattern {
         }
 
         /**
+         * See <a href="https://en.wikipedia.org/wiki/Proxy_pattern">Proxy_pattern</a>
+         * In distributed object communication, a local object represents a remote object (one that belongs to a different address space).
+         * The local object is a proxy for the remote object, and method invocation on the local object results in remote method invocation on the remote object.
+         * An example would be an ATM implementation, where the ATM might hold proxy objects for bank information that exists in the remote server.
          * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
          * A remote proxy provides a local representative for an object that resides in a different address space. This is what the "stub" code in RPC and CORBA provides.
          */
@@ -89,6 +106,8 @@ public @interface StructuralPattern {
         }
 
         /**
+         * See <a href="https://en.wikipedia.org/wiki/Proxy_pattern">Proxy_pattern</a>
+         * A protection proxy might be used to control access to a resource based on access rights.
          * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
          * A protective proxy controls access to a sensitive master object. The "surrogate" object checks that the caller has the access permissions required prior to forwarding the request.
          */
@@ -98,7 +117,7 @@ public @interface StructuralPattern {
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
         @DesignPattern.GOF
-        @interface Protective {
+        @interface Protection {
         }
 
         /**
@@ -229,6 +248,10 @@ public @interface StructuralPattern {
     @DesignPattern.GOF
     @interface Bridge {
 
+        /**
+         * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
+         * Abstraction (abstract class) {@link Bridge.Abstraction.Class}: defines the abstract interface {@link Bridge.Abstraction.Interface}, maintains the Implementor reference {@link Bridge.Implementation.Reference}.
+         */
         @DesignPattern.Structural
         @Documented
         @Inherited
@@ -243,11 +266,46 @@ public @interface StructuralPattern {
             @Retention(RetentionPolicy.SOURCE)
             @Target({ElementType.TYPE})
             @DesignPattern.GOF
+            @interface Class {
+            }
+
+            @DesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Interface {
+            }
+
+            /**
+             * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
+             * RefinedAbstraction (normal class) {@link Bridge.Abstraction.Refined.Class}: extends (optionally) the interface defined by {@link Abstraction}, extends abstract class {@link Bridge.Abstraction}
+             */
+            @DesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
             @interface Refined {
+
+                @DesignPattern.Structural
+                @Documented
+                @Inherited
+                @Retention(RetentionPolicy.SOURCE)
+                @Target({ElementType.TYPE})
+                @DesignPattern.GOF
+                @interface Class {
+                }
             }
 
         }
 
+        /**
+         * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
+         * Implementor (interface) {@link Bridge.Implementation.Interface}: defines the interface for implementation classes {@link Bridge.Implementation.Concrete.Class}
+         */
         @DesignPattern.Structural
         @Documented
         @Inherited
@@ -262,9 +320,22 @@ public @interface StructuralPattern {
             @Retention(RetentionPolicy.SOURCE)
             @Target({ElementType.TYPE})
             @DesignPattern.GOF
-            @interface Generic {
+            @interface Interface {
             }
 
+            @DesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.FIELD})
+            @DesignPattern.GOF
+            @interface Reference {
+            }
+
+            /**
+             * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
+             * ConcreteImplementor (normal class): implements the Implementor interface
+             */
             @DesignPattern.Structural
             @Documented
             @Inherited
@@ -272,6 +343,16 @@ public @interface StructuralPattern {
             @Target({ElementType.TYPE})
             @DesignPattern.GOF
             @interface Concrete {
+
+                @DesignPattern.Structural
+                @Documented
+                @Inherited
+                @Retention(RetentionPolicy.SOURCE)
+                @Target({ElementType.TYPE})
+                @DesignPattern.GOF
+                @interface Class {
+                }
+
             }
 
         }
