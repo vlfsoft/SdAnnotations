@@ -21,6 +21,9 @@ public @interface BehavioralPattern {
     /**
      * See <a href="https://en.wikipedia.org/wiki/Delegation_pattern">Delegation pattern</a>
      * allows object composition to achieve the same code reuse as inheritance
+     * In delegation, two objects are involved in handling a request: a receiving object delegates operations to its {@link Delegate}.
+     * This is analogous to subclasses deferring requests to parent classes.
+     * In delegation, an object handles a request by delegating to a second object (the {@link Delegate}).
      */
     @DesignPattern.Behavioral
     @Documented
@@ -29,6 +32,16 @@ public @interface BehavioralPattern {
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.CONSTRUCTOR})
     @DesignPattern.Fundamental
     @interface Delegation {
+
+        @DesignPattern.Behavioral
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.FIELD})
+        @DesignPattern.Fundamental
+        @interface Delegate {
+        }
+
     }
 
     /**
@@ -215,7 +228,7 @@ public @interface BehavioralPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
     @DesignPattern.GOF
     @interface Strategy {
     }

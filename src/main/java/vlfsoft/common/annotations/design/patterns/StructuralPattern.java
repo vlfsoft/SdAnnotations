@@ -244,19 +244,20 @@ public @interface StructuralPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE})
+    @Target({})
     @DesignPattern.GOF
     @interface Bridge {
 
         /**
          * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
-         * Abstraction (abstract class) {@link Bridge.Abstraction.Class}: defines the abstract interface {@link Bridge.Abstraction.Interface}, maintains the Implementor reference {@link Bridge.Implementation.Reference}.
+         * Abstraction (abstract class) {@link Bridge.Abstraction.Class}: defines the abstract interface {@link Bridge.Abstraction.Interface},
+         * maintains the Implementor reference {@link Bridge.Implementation.Reference}.
          */
         @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE})
+        @Target({})
         @DesignPattern.GOF
         @interface Abstraction {
 
@@ -286,7 +287,7 @@ public @interface StructuralPattern {
             @Documented
             @Inherited
             @Retention(RetentionPolicy.SOURCE)
-            @Target({ElementType.TYPE})
+            @Target({})
             @DesignPattern.GOF
             @interface Refined {
 
@@ -310,7 +311,7 @@ public @interface StructuralPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE})
+        @Target({})
         @DesignPattern.GOF
         @interface Implementation {
 
@@ -333,6 +334,28 @@ public @interface StructuralPattern {
             }
 
             /**
+             * Abstract class, implementing common features for {@link Bridge.Implementation.Concrete.Class}
+             */
+            @DesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({})
+            @DesignPattern.GOF
+            @interface Generic {
+
+                @DesignPattern.Structural
+                @Documented
+                @Inherited
+                @Retention(RetentionPolicy.SOURCE)
+                @Target({ElementType.TYPE})
+                @DesignPattern.GOF
+                @interface Class {
+                }
+
+            }
+
+            /**
              * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
              * ConcreteImplementor (normal class): implements the Implementor interface
              */
@@ -340,7 +363,7 @@ public @interface StructuralPattern {
             @Documented
             @Inherited
             @Retention(RetentionPolicy.SOURCE)
-            @Target({ElementType.TYPE})
+            @Target({})
             @DesignPattern.GOF
             @interface Concrete {
 
@@ -370,7 +393,7 @@ public @interface StructuralPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.FIELD})
+    @Target({})
     @DesignPattern.GOF
     @interface Flyweight {
 
@@ -381,9 +404,66 @@ public @interface StructuralPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE, ElementType.FIELD})
+        @Target({})
         @DesignPattern.GOF
         @interface Factory {
+
+            @DesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Interface {
+            }
+
+            @DesignPattern.Creational
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({})
+            @DesignPattern.GOF
+            @interface Implementation {
+
+                /**
+                 * adds to the {@link Repository} a new {@link Flyweight} only after request from a client
+                 */
+                @DesignPattern.Creational
+                @Documented
+                @Inherited
+                @Retention(RetentionPolicy.SOURCE)
+                @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+                @DesignPattern.GOF
+                @interface Lazy {
+                }
+
+                /**
+                 * populates the {@link Repository} with {@link Flyweight}(a) during instantiation of {@link Flyweight.Factory}.
+                 */
+                @DesignPattern.Creational
+                @Documented
+                @Inherited
+                @Retention(RetentionPolicy.SOURCE)
+                @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+                @DesignPattern.GOF
+                @interface Eager {
+                }
+
+            }
+
+            /**
+             * See <a href="https://sourcemaking.com/design_patterns/flyweight">Flyweight pattern</a>
+             * Flyweights are stored in a Factory's repository {@link Flyweight.Factory.Repository}
+             */
+            @DesignPattern.Structural
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE, ElementType.FIELD})
+            @DesignPattern.GOF
+            @interface Repository {
+            }
+
         }
 
         /**
@@ -394,7 +474,7 @@ public @interface StructuralPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE, ElementType.FIELD})
+        @Target({ElementType.TYPE, ElementType.PARAMETER})
         @DesignPattern.GOF
         @interface Extrinsic {
         }
@@ -411,7 +491,6 @@ public @interface StructuralPattern {
         @DesignPattern.GOF
         @interface Intrinsic {
         }
-
 
     }
 

@@ -41,7 +41,7 @@ public @interface CreationalPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.METHOD})
+    @Target({})
     @DesignPattern.ETC
     @interface Factory {
 
@@ -75,7 +75,6 @@ public @interface CreationalPattern {
             Disambiguation
         }
 
-
         /**
          * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: factory patterns</a>
          * Joshua Bloch “Effective Java”
@@ -85,7 +84,7 @@ public @interface CreationalPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE, ElementType.METHOD})
+        @Target({ElementType.METHOD})
         @DesignPattern.ETC
         @interface StaticFactoryMethod {
             Need[] needs() default {};
@@ -99,9 +98,8 @@ public @interface CreationalPattern {
          * a factory class which has a method that returns different types of object based on given input
          * Creates objects without exposing the instantiation logic to the client and refers to the newly created object through a common interface.
          * It is a simplified version of {@link FactoryMethod}
-         *
+         * <p>
          * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: factory patterns</a>
-         *
          */
         @DesignPattern.Creational
         @Documented
@@ -135,10 +133,29 @@ public @interface CreationalPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.METHOD})
+        @Target({})
         @DesignPattern.GOF
         @interface FactoryMethod {
-            Need[] needs() default {};
+
+            @DesignPattern.Creational
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.METHOD})
+            @DesignPattern.GOF
+            @interface Interface {
+                Need[] needs() default {};
+            }
+
+            @DesignPattern.Creational
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.METHOD})
+            @DesignPattern.GOF
+            @interface Implementation {
+                Need[] needs() default {};
+            }
         }
 
         /**
@@ -150,7 +167,7 @@ public @interface CreationalPattern {
          * since it uses only the generic interfaces of their products.
          * This pattern separates the details of implementation of a set of objects from their general usage and relies on object composition,
          * as object creation is implemented in methods exposed in the factory interface.
-         *
+         * <p>
          * See <a href="https://sourcemaking.com/design_patterns/abstract_factory">Abstract Factory Design Pattern</a>
          * Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
          */
@@ -158,10 +175,29 @@ public @interface CreationalPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE, ElementType.METHOD})
+        @Target({})
         @DesignPattern.GOF
         @interface AbstractFactory {
-            Need[] needs() default {};
+
+            @DesignPattern.Creational
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Interface {
+                Need[] needs() default {};
+            }
+
+            @DesignPattern.Creational
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE})
+            @DesignPattern.GOF
+            @interface Implementation {
+            }
+
         }
     }
 
@@ -182,22 +218,31 @@ public @interface CreationalPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+        @Target({})
         @DesignPattern.GOF
-        @interface Lazy {
-        }
+        @interface Implementation {
 
-        @DesignPattern.Creational
-        @Documented
-        @Inherited
-        @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
-        @DesignPattern.GOF
-        @interface NonLazy {
+            @DesignPattern.Creational
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+            @DesignPattern.GOF
+            @interface Lazy {
+            }
+
+            @DesignPattern.Creational
+            @Documented
+            @Inherited
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+            @DesignPattern.GOF
+            @interface Eager {
+            }
+
         }
 
     }
-
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Builder_pattern">Builder pattern</a>
@@ -242,7 +287,7 @@ public @interface CreationalPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.CONSTRUCTOR, ElementType.METHOD})
+    @Target({ElementType.TYPE})
     @DesignPattern.ETC
     @interface CreatedWithFactory {
     }
@@ -260,6 +305,23 @@ public @interface CreationalPattern {
     @Target({ElementType.TYPE, ElementType.CONSTRUCTOR})
     @DesignPattern.ETC
     @interface UtilityClass {
+    }
+
+    /**
+     * See <a href="https://sourcemaking.com/design_patterns/object_pool">Object Pool Design Pattern</a>
+     * Object pools (otherwise known as resource pools) are used to manage the object caching.
+     * A client with access to a Object pool can avoid creating a new Objects by simply asking the pool for one that has already been instantiated instead.
+     * Generally the pool will be a growing pool, i.e. the pool itself will create new objects if the pool is empty,
+     * or we can have a pool, which restricts the number of objects created.
+     * {@link ObjectPool} minimizes instantiating new objects, since cost of initializing a class instance is high.
+     */
+    @DesignPattern.Creational
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.METHOD})
+    @DesignPattern.ETC
+    @interface ObjectPool {
     }
 
 }
