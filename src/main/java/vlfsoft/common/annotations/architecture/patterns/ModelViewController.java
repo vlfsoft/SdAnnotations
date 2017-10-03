@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 public @interface ModelViewController {
 
     /**
-     * stores data that is retrieved according to commands from the controller and displayed in the view.
+     * stores data that is retrieved according to command from the controller and displayed in the view.
      */
     @Documented
     @Inherited
@@ -37,8 +37,8 @@ public @interface ModelViewController {
     }
 
     /**
-     * can send commands to the model to update the model's state (e.g., editing a document).
-     * It can also send commands to its associated view to change the view's presentation of the model (e.g., scrolling through a document).
+     * can send command to the model to update the model's state (e.g., editing a document).
+     * It can also send command to its associated view to change the view's presentation of the model (e.g., scrolling through a document).
      */
     @Documented
     @Inherited

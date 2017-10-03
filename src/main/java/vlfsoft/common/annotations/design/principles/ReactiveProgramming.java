@@ -9,14 +9,46 @@ import java.lang.annotation.Target;
 
 /**
  * See <a href="https://en.wikipedia.org/wiki/Reactive_programming">Reactive programming</a>
+ * See <a href="http://www.reactivemanifesto.org">The Reactive Manifesto</a>
  *
  */
 @SoftwareDesign
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.TYPE, ElementType.FIELD})
+@Target({})
 public @interface ReactiveProgramming {
 
+    @SoftwareDesign
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD})
+    public @interface Responsive {
+    }
+
+    @SoftwareDesign
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD})
+    public @interface Resilient {
+    }
+
+    @SoftwareDesign
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD})
+    public @interface Elastic {
+    }
+
+    @SoftwareDesign
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.TYPE, ElementType.FIELD})
+    public @interface MessageDriven {
+    }
 
 }

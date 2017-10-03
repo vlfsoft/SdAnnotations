@@ -15,15 +15,15 @@ import java.lang.annotation.Target;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({})
 public @interface BehavioralPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Delegation_pattern">Delegation pattern</a>
-     * allows object composition to achieve the same code reuse as inheritance
-     * In delegation, two objects are involved in handling a request: a receiving object delegates operations to its {@link Delegate}.
+     * allows object {@link @ObjectComposition.Composition} to achieve the same code reuse as inheritance
+     * In delegation, two objects are involved in handling a request: a {@link ReceivingObject} delegates operations to its {@link Delegate}.
      * This is analogous to subclasses deferring requests to parent classes.
-     * In delegation, an object handles a request by delegating to a second object (the {@link Delegate}).
+     * In {@link Delegation}, an object handles a request by delegating to a second object (the {@link Delegate}).
      */
     @DesignPattern.Behavioral
     @Documented
@@ -32,6 +32,15 @@ public @interface BehavioralPattern {
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.CONSTRUCTOR})
     @DesignPattern.Fundamental
     @interface Delegation {
+
+        @DesignPattern.Behavioral
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.Fundamental
+        @interface ReceivingObject {
+        }
 
         @DesignPattern.Behavioral
         @Documented
@@ -120,7 +129,7 @@ public @interface BehavioralPattern {
      * {@link ParameterValues} - values for parameters of the {@link Receiver} {@link Receiver.Method} are stored in the {@link Command},
      * the {@link Receiver} object to execute these {@link Receiver.Method}-methods is also stored
      * in the {@link Command} object by {@link vlfsoft.common.annotations.design.principles.ObjectComposition.Aggregation}.
-     * The {@link Receiver} then does the work when the {@link Execute}() method in {@link Command} is called.
+     * The {@link Receiver} then does the work when the {@link ExecuteMethod}() method in {@link Command} is called.
      * An {@link Invoker} object knows how to execute a {@link Command}, and optionally does bookkeeping about the {@link Command} execution.
      * The {@link Invoker} does not know anything about a concrete command, it knows only about command interface.
      * {@link Invoker} object(s), {@link Command} objects and {@link Receiver} objects are held by a {@link Client} object,
@@ -132,7 +141,7 @@ public @interface BehavioralPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE})
+    @Target({})
     @DesignPattern.GOF
     @interface Command {
 
@@ -147,7 +156,7 @@ public @interface BehavioralPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE})
+        @Target({})
         @DesignPattern.GOF
         @interface Implementation {
 
@@ -182,7 +191,7 @@ public @interface BehavioralPattern {
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.METHOD})
         @DesignPattern.GOF
-        @interface Execute {
+        @interface ExecuteMethod {
         }
 
         @Documented
@@ -228,9 +237,26 @@ public @interface BehavioralPattern {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+    @Target({ElementType.TYPE})
     @DesignPattern.GOF
     @interface Strategy {
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+        @DesignPattern.GOF
+        @interface Interface {
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+        @DesignPattern.GOF
+        @interface Implementation {
+        }
+
     }
 
     // Template method pattern

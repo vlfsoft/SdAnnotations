@@ -23,7 +23,7 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.TYPE, ElementType.FIELD})
+@Target({})
 public @interface StructuralPattern {
 
     /**
@@ -50,8 +50,8 @@ public @interface StructuralPattern {
      * a class functioning as an interface to something else.
      * The proxy could interface to anything: a network connection, a large object in memory, a file, or some other resource that is expensive or impossible to duplicate.
      * In short, a proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes.
-     * Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy, extra functionality can be provided,
-     * for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+     * Use of the proxy can simply be forwarding to the {@link RealObject}, or can provide additional logic. In the proxy, extra functionality can be provided,
+     * for example caching when operations on the {@link RealObject} are resource intensive, or checking preconditions before operations on the real object are invoked.
      * For the client, usage of a proxy object is similar to using the real object, because both implement the same interface.
      * See <a href="https://sourcemaking.com/design_patterns/proxy">Proxy Design Pattern</a>
      */
@@ -63,13 +63,16 @@ public @interface StructuralPattern {
     @DesignPattern.GOF
     @interface Proxy {
 
+        /**
+         * For the client, usage of a {@link Proxy} object is similar to using the {@link RealObject}, because both implement the same {@link Interface}.
+         */
         @DesignPattern.Structural
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE})
         @DesignPattern.GOF
-        @interface Abstraction {
+        @interface Interface {
         }
 
         /**
@@ -149,12 +152,17 @@ public @interface StructuralPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Facade_pattern">Facade pattern</a>
+     *  provides a simplified interface to a larger body of code, such as a class library .
+     *  See <a href="https://sourcemaking.com/design_patterns/facade">Facade Design Pattern</a>
+     *  Provide a unified interface to a set of interfaces of {@link SubsystemOrComponent}.
+     *  Define a higher-level interface that makes a {@link SubsystemOrComponent} easier to use.
+     *  Wrap a complicated {@link SubsystemOrComponent} with a simpler interface.
      */
     @DesignPattern.Structural
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.TYPE, ElementType.FIELD})
+    @Target({})
     @DesignPattern.GOF
     @interface Facade {
 
@@ -162,10 +170,27 @@ public @interface StructuralPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.GOF
+        @interface Interface {
+        }
+
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.GOF
+        @interface Implementation {
+        }
+
+        @DesignPattern.Structural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD})
         @DesignPattern.GOF
-        @interface Subsystem {
-
+        @interface SubsystemOrComponent {
         }
     }
 
@@ -195,6 +220,7 @@ public @interface StructuralPattern {
      * (also known as Wrapper, an alternative naming shared with the Decorator pattern)
      * that allows the interface of an existing class to be used as another interface.[1]
      * It is often used to make existing classes work with others without modifying their source code.
+     * Adapter class that converts the (incompatible) interface of a class ({@link AdapteeInterface}) into another interface ({@link TargetInterface}) clients require
      */
     @DesignPattern.Structural
     @Documented
@@ -203,6 +229,23 @@ public @interface StructuralPattern {
     @Target({ElementType.TYPE, ElementType.FIELD})
     @DesignPattern.GOF
     @interface Adapter {
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.GOF
+        @interface AdapteeInterface {
+        }
+
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE})
+        @DesignPattern.GOF
+        @interface TargetInterface {
+        }
+
         /**
          * In this adapter pattern, the adapter contains an instance of the class it wraps.
          * In this situation, the adapter makes calls to the instance of the wrapped object.
@@ -250,8 +293,8 @@ public @interface StructuralPattern {
 
         /**
          * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
-         * Abstraction (abstract class) {@link Bridge.Abstraction.Class}: defines the abstract interface {@link Bridge.Abstraction.Interface},
-         * maintains the Implementor reference {@link Bridge.Implementation.Reference}.
+         * Interface {@link Bridge.Abstraction.Class}: implements the abstract interface {@link Bridge.Abstraction.Interface} and
+         * holds the Implementor reference {@link Bridge.Implementation.Reference}.
          */
         @DesignPattern.Structural
         @Documented
@@ -281,7 +324,8 @@ public @interface StructuralPattern {
 
             /**
              * See <a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge pattern</a>
-             * RefinedAbstraction (normal class) {@link Bridge.Abstraction.Refined.Class}: extends (optionally) the interface defined by {@link Abstraction}, extends abstract class {@link Bridge.Abstraction}
+             * RefinedAbstraction (normal class) {@link Bridge.Abstraction.Refined.Class}: extends (optionally) the interface defined by {@link Abstraction.Interface},
+             * extends abstract class {@link Bridge.Abstraction.Class}
              */
             @DesignPattern.Structural
             @Documented

@@ -32,7 +32,7 @@ public @interface ModelViewPresenterPattern {
     }
 
     /**
-     * passive interface that displays data (the model) and routes user commands (events) to the presenter to act upon that data.
+     * passive interface that displays data (the model) and routes user command (events) to the presenter to act upon that data.
      */
     @Documented
     @Inherited

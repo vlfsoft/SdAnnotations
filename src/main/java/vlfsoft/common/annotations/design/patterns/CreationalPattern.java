@@ -16,7 +16,7 @@ import vlfsoft.common.annotations.design.DesignPattern;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({})
 public @interface CreationalPattern {
 
     /**
@@ -32,9 +32,9 @@ public @interface CreationalPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)#Terminology">Factory (object-oriented programming)</a>
-     * a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class[1] from some method call,
+     * a pool is an object for creating other objects – formally a pool is a function or method that returns objects of a varying prototype or class[1] from some method call,
      * which is assumed to be "new".
-     * More broadly, a subroutine that returns a "new" object may be referred to as a "factory", as in factory method or factory function.
+     * More broadly, a subroutine that returns a "new" object may be referred to as a "pool", as in pool method or pool function.
      * See <a href="https://www.codeproject.com/Articles/1131770/Factory-Patterns-Simple-Factory-Pattern">Factory Patterns - Simple Factory Pattern</a>
      */
     @DesignPattern.Creational
@@ -46,7 +46,7 @@ public @interface CreationalPattern {
     @interface Factory {
 
         /**
-         * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: factory patterns</a>
+         * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: pool patterns</a>
          */
         enum Need {
             /**
@@ -55,8 +55,8 @@ public @interface CreationalPattern {
             ControlOverInstantiation,
             /**
              * you can easily change the logger implementation from FileSystemLogger to DatabaseLogger.
-             * You just have to modify the function createLogger() (which is a factory).
-             * This change is invisible for the client (business) code since the client code use an interface of logger (ILogger) and the choice of the logger implementation is made by the factory.
+             * You just have to modify the function createLogger() (which is a pool).
+             * This change is invisible for the client (business) code since the client code use an interface of logger (ILogger) and the choice of the logger implementation is made by the pool.
              * By doing so, you’re creating a loose coupling between the implementation of the logger and the parts of codes that uses the logger.
              */
             LooseCoupling,
@@ -64,21 +64,21 @@ public @interface CreationalPattern {
              * <ul>
              * <li> Reduce the number of lines of code
              * <li> Avoid code duplication
-             * <li> Organise the code: the factory has the responsibility to build a KeywordsCacheData and the business class just uses it.
+             * <li> Organise the code: the pool has the responsibility to build a KeywordsCacheData and the business class just uses it.
              * </ul>
              */
             Encapsulation,
             /**
              * you have a class with multiple constructors (with very different behaviors)
-             * using a factory adds a description of what the creation is about with the factory method name
+             * using a pool adds a description of what the creation is about with the pool method name
              */
             Disambiguation
         }
 
         /**
-         * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: factory patterns</a>
+         * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: pool patterns</a>
          * Joshua Bloch “Effective Java”
-         * "A class can provide a public static factory method, which is simply a static method that returns an instance of the class."
+         * "A class can provide a public static pool method, which is simply a static method that returns an instance of the class."
          */
         @DesignPattern.Creational
         @Documented
@@ -92,14 +92,14 @@ public @interface CreationalPattern {
 
         /**
          * See <a href="https://www.codeproject.com/Articles/1131770/Factory-Patterns-Simple-Factory-Pattern">Factory Patterns - Simple Factory Pattern</a>
-         * In simple factory pattern, we have a factory class which has a method that returns different types of object based on given input.
+         * In simple pool pattern, we have a pool class which has a method that returns different types of object based on given input.
          * <p>
          * See <a href="https://dzone.com/articles/factory-method-vs-simple-factory-1">Factory Method vs. Simple Factory</a>
-         * a factory class which has a method that returns different types of object based on given input
+         * a pool class which has a method that returns different types of object based on given input
          * Creates objects without exposing the instantiation logic to the client and refers to the newly created object through a common interface.
          * It is a simplified version of {@link FactoryMethod}
          * <p>
-         * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: factory patterns</a>
+         * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: pool patterns</a>
          */
         @DesignPattern.Creational
         @Documented
@@ -113,9 +113,9 @@ public @interface CreationalPattern {
 
         /**
          * See <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">Factory method pattern</a>
-         * creational pattern that uses factory methods to deal with the problem of creating objects
+         * creational pattern that uses pool methods to deal with the problem of creating objects
          * without having to specify the exact class of the object that will be created.
-         * This is done by creating objects by calling a factory method—either specified in an interface
+         * This is done by creating objects by calling a pool method—either specified in an interface
          * and implemented by child classes, or implemented in a base class and optionally overridden
          * by derived classes—rather than by calling a constructor.
          * <p>
@@ -128,6 +128,9 @@ public @interface CreationalPattern {
          * Factory Method is to creating objects as Template Method is to implementing an algorithm.
          * A superclass specifies all standard and generic behavior (using pure virtual "placeholders" for creation steps),
          * and then delegates the creation details to subclasses that are supplied by the client.
+         *
+         * Often, designs start out using {@link FactoryMethod} (less complicated, more customizable, subclasses proliferate) and
+         * evolve toward {@link AbstractFactory}, {@link Prototype}, or {@link Builder} (more flexible, more complex) as the designer discovers where more flexibility is needed.
          */
         @DesignPattern.Creational
         @Documented
@@ -159,14 +162,14 @@ public @interface CreationalPattern {
         }
 
         /**
-         * See <a href="https://en.wikipedia.org/wiki/Abstract_factory_pattern">Abstract factory pattern</a>
+         * See <a href="https://en.wikipedia.org/wiki/Abstract_factory_pattern">Abstract pool pattern</a>
          * provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.
-         * In normal usage, the client software creates a concrete implementation of the abstract factory and then uses the generic interface
-         * of the factory to create the concrete objects that are part of the theme.
+         * In normal usage, the client software creates a concrete implementation of the abstract pool and then uses the generic interface
+         * of the pool to create the concrete objects that are part of the theme.
          * The client doesn't know (or care) which concrete objects it gets from each of these internal factories,
          * since it uses only the generic interfaces of their products.
          * This pattern separates the details of implementation of a set of objects from their general usage and relies on object composition,
-         * as object creation is implemented in methods exposed in the factory interface.
+         * as object creation is implemented in methods exposed in the pool interface.
          * <p>
          * See <a href="https://sourcemaking.com/design_patterns/abstract_factory">Abstract Factory Design Pattern</a>
          * Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
@@ -202,6 +205,7 @@ public @interface CreationalPattern {
     }
 
     /**
+     * The Singleton class offers two things: one and only one instance of the class, and a global single point of access to that object.
      * See <a href="https://en.wikipedia.org/wiki/Singleton_pattern">Singleton pattern</a>
      * restricts the instantiation of a class to one object.
      * This is useful when exactly one object is needed to coordinate actions across the system.
@@ -290,6 +294,10 @@ public @interface CreationalPattern {
     @Target({ElementType.TYPE})
     @DesignPattern.ETC
     @interface CreatedWithFactory {
+        /**
+         * Name of {@link Factory.FactoryMethod.Interface} or {@link Factory.AbstractFactory.Interface}
+         */
+        Class value();
     }
 
     /**
@@ -308,6 +316,14 @@ public @interface CreationalPattern {
     }
 
     /**
+     *
+     * See <a href="https://en.wikipedia.org/wiki/Object_pool_pattern">Object pool pattern</a>
+     * uses a set of initialized objects kept ready to use – a "pool" – rather than allocating and destroying them on demand.
+     * A client of the pool will request an object from the pool and perform operations on the returned object.
+     * When the client has finished, it returns the object to the pool rather than destroying it; this can be done manually or automatically.
+     * Object pools are primarily used for performance: in some circumstances, object pools significantly improve performance.
+     * Object pools complicate object lifetime, as objects obtained from and returned to a pool are not actually created or destroyed at this time,
+     * and thus require care in implementation.
      * See <a href="https://sourcemaking.com/design_patterns/object_pool">Object Pool Design Pattern</a>
      * Object pools (otherwise known as resource pools) are used to manage the object caching.
      * A client with access to a Object pool can avoid creating a new Objects by simply asking the pool for one that has already been instantiated instead.
