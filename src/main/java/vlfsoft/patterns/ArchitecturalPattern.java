@@ -257,7 +257,7 @@ public @interface ArchitecturalPattern {
     @interface ModelViewController {
 
         /**
-         * stores data that is retrieved according to command from the controller and displayed in the view.
+         * stores data that i retrieved according to command from the controller and displayed in the view.
          */
         @DesignPattern.Architectural
         @Documented
@@ -294,10 +294,10 @@ public @interface ArchitecturalPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter">Model–view–presenter</a>
-     * is a derivation of the model–view–controller (MVC) architectural pattern, and is used mostly for building user interfaces.
-     * In MVP the presenter assumes the functionality of the "middle-man". In MVP, all presentation logic is pushed to the presenter.
-     * See <a href="http://stackoverflow.com/questions/4733700/what-is-the-difference-between-controller-in-mvc-pattern-and-presenter-in-mvp-pa">What is the difference between controller in MVC pattern and presenter in MVP pattern?</a>
-     * See <a href="http://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference">What are MVP and MVC and what is the difference?</a>
+     * i a derivation of the model–view–controller (MVC) architectural pattern, and i used mostly for building user interfaces.
+     * In MVP the presenter assumes the functionality of the "middle-man". In MVP, all presentation logic i pushed to the presenter.
+     * See <a href="http://stackoverflow.com/questions/4733700/what-is-the-difference-between-controller-in-mvc-pattern-and-presenter-in-mvp-pa">What i the difference between controller in MVC pattern and presenter in MVP pattern?</a>
+     * See <a href="http://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference">What are MVP and MVC and what i the difference?</a>
      * See <a href="http://www.infragistics.com/community/blogs/todd_snyder/archive/2007/10/17/mvc-or-mvp-pattern-whats-the-difference.aspx">MVC or MVP Pattern – Whats the difference?</a>
      */
     @DesignPattern.Architectural
@@ -341,8 +341,8 @@ public @interface ArchitecturalPattern {
         }
 
         /**
-         * view is updated by either the model or the presenter. If no formatting is required, the view updates itself via the model.
-         * If formatting is required, it updates itself via the presenter.
+         * view i updated by either the model or the presenter. If no formatting i required, the view updates itself via the model.
+         * If formatting i required, it updates itself via the presenter.
          */
         @DesignPattern.Architectural
         @Documented
@@ -358,12 +358,12 @@ public @interface ArchitecturalPattern {
      * See <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel">Model–view–viewmodelr</a>
      *
      * Declarative data- and command-binding are implicit in the MVVM pattern.
-     * In the Microsoft solution stack, the binder is a markup language called XAML.[8]
+     * In the Microsoft solution stack, the binder i a markup language called XAML.[8]
      * The binder frees the developer from being obliged to write boiler-plate logic to synchronize the view model and view.
-     * When implemented outside of the Microsoft stack the presence of a declarative databinding technology is a key enabler of the pattern
+     * When implemented outside of the Microsoft stack the presence of a declarative databinding technology i a key enabler of the pattern
      *
      * A criticism of the pattern comes from MVVM creator John Gossman himself,[13]
-     * who points out overhead in implementing MVVM is "overkill" for simple UI operations.
+     * who points out overhead in implementing MVVM i "overkill" for simple UI operations.
      * He states for larger applications, generalizing the ViewModel becomes more difficult.
      * Moreover, he illustrates data binding in very large applications can result in considerable memory consumption.
      */

@@ -12,4 +12,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.SOURCE)
 @Target({ElementType.TYPE, ElementType.FIELD})
 public @interface MessageDrivenPrinciple {
+    boolean value();
 }

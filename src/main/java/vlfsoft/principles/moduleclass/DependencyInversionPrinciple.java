@@ -29,6 +29,8 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 public @interface DependencyInversionPrinciple {
 
+    boolean value();
+
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)

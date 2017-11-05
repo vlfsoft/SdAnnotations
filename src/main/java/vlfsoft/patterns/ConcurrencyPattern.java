@@ -103,7 +103,7 @@ public @interface ConcurrencyPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/producer-consumer">Producer Consumer pattern</a>
      * Intent:
-     * Producer Consumer Design pattern is a classic concurrency pattern which reduces coupling between Producer and Consumer by separating
+     * Producer Consumer Design pattern i a classic concurrency pattern which reduces coupling between Producer and Consumer by separating
      * Identification of work with Execution of Work.
      * Use the Producer Consumer idiom when: <ul>
      * <li> decouple system by separate work in two process produce and consume.

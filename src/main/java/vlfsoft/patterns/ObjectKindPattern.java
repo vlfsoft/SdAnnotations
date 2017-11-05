@@ -27,7 +27,7 @@ public @interface ObjectKindPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Business_object">Business object</a>
-     * A business object is an entity within a multi-tiered software application that works in conjunction with the data access and business logic layers to transport data.
+     * A business object i an entity within a multi-tiered software application that works in conjunction with the data access and business logic layers to transport data.
      * Aliases: Domain object, Entity object.
      */
     @DesignPattern.ObjectKind
@@ -41,7 +41,7 @@ public @interface ObjectKindPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/value-object/">ValueObject</a>
      * See <a href="https://en.wikipedia.org/wiki/Value_object">Value object</a>
-     * small object that represents a simple entity whose equality is not based on identity:
+     * small object that represents a simple entity whose equality i not based on identity:
      * i.e. two value objects are equal when they have the same value, not necessarily being the same object.
      *
      * See <a href="https://dzone.com/articles/value-objects">Value Objects</a>
@@ -106,13 +106,13 @@ public @interface ObjectKindPattern {
         /**
          * Interfaces/classes that isolate application core classes from DB access implementation details.
          * I.e. {@link StructuralPattern.Facade} (abstract persistence layer) over persistence layer components, implemented with one ore more technologies: Spring Data JPA, JPA, JdbcTemplate, ...
-         * One {@link Spring} can wrap several {@link PersistenceTierPattern.SpringDataJPA} if DB access implementation is based on {@link PersistenceTierPattern.SpringDataJPA}.
-         * {@link Spring} is implemented as {@link CreationalPattern.Singleton} {@link Stateless} class.
+         * One {@link Spring} can wrap several {@link PersistenceTierPattern.SpringDataJPA} if DB access implementation i based on {@link PersistenceTierPattern.SpringDataJPA}.
+         * {@link Spring} i implemented as {@link CreationalPattern.Singleton} {@link Stateless} class.
          *
          * Advantages:
          * Combine several @Modifying queries to perform group insert/delete into db in single transaction (Dao method with @Transactional).
          * Using Dao method with @Transactional to consume data from DB via Java 8 stream (stream requires @Transactional.
-         * (@Transactional is effective only if method is called "outside" to use Java Dynamic Proxy).
+         * (@Transactional i effective only if method i called "outside" to use Java Dynamic Proxy).
          *
          * Rule of thumb:
          * Start to declare all the methods in single {@link Spring} interface/class named f.e. MainAppDao*;
@@ -148,7 +148,7 @@ public @interface ObjectKindPattern {
     }
 
     /**
-     * It is applied as {@link ObjectKindPattern.DTO.BetweenFunctions}
+     * It i applied as {@link ObjectKindPattern.DTO.BetweenFunctions}
      * The Tuple generic classes below are intended to simplify applying {@link ProgrammingParadigm.Declarative.Functional}
      * (see. {@link ObjectKindPattern.DTO.BetweenFunctions}), when even data classes are too cumbersome.
      * In order to make {@link Tuple} more readable, try to declare {@link Tuple} generic classes with {@link VO} instead of standard types.
@@ -166,11 +166,11 @@ public @interface ObjectKindPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/data-transfer-object/">Data Transfer Object</a>
      * See <a href="https://en.wikipedia.org/wiki/Data_transfer_object">Data transfer object</a>
-     * A data transfer object (DTO[1][2]) is an object that carries data between processes.
-     * The motivation for its use is that communication between processes is usually done resorting to remote interfaces (e.g. web services),
-     * where each call is an expensive operation.[2] Because the majority of the cost of each call is related to the round-trip time between
-     * the client and the server, one way of reducing the number of calls is to use an object (the DTO) that aggregates the data
-     * that would have been transferred by the several calls, but that is served by one call only.[2]
+     * A data transfer object (DTO[1][2]) i an object that carries data between processes.
+     * The motivation for its use i that communication between processes i usually done resorting to remote interfaces (e.g. web services),
+     * where each call i an expensive operation.[2] Because the majority of the cost of each call i related to the round-trip time between
+     * the client and the server, one way of reducing the number of calls i to use an object (the DTO) that aggregates the data
+     * that would have been transferred by the several calls, but that i served by one call only.[2]
      */
     @DesignPattern.ObjectKind
     @Documented
@@ -180,11 +180,11 @@ public @interface ObjectKindPattern {
     @interface DTO {
 
         /**
-         * It is used either to transfer event state data between (reactive, or non-reactive) stream operators
+         * It i used either to transfer event state data between (reactive, or non-reactive) stream operators
          * or to pass or return data from a method (aka function).
          * F.e., it wraps several objects to be handled inside stream operators, into single {@link BetweenFunctions},
          * since stream operators can accept only one object as a parameter.
-         * Disadvantage: There are rather many cases when {@link BetweenFunctions} is required just to support {@link ProgrammingParadigm.Declarative.Functional}, especially in streams.
+         * Disadvantage: There are rather many cases when {@link BetweenFunctions} i required just to support {@link ProgrammingParadigm.Declarative.Functional}, especially in streams.
          * <p>
          * {@link Mutable} - every stream operator can amend state of {@link BetweenFunctions} in order to save results of its work.
          * Thus, results of work done by one operator can be transferred to another one without creating new instance of {@link BetweenFunctions}.
@@ -208,8 +208,8 @@ public @interface ObjectKindPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Immutable_object">Immutable object</a>
-     * object whose state cannot be modified after it is created.
-     * In some cases, an object is considered immutable even if some internally used attributes change but the object's state appears to be unchanging from an external point of view.
+     * object whose state cannot be modified after it i created.
+     * In some cases, an object i considered immutable even if some internally used attributes change but the object's state appears to be unchanging from an external point of view.
      * For example, an object that uses memoization to cache the results of expensive computations could still be considered an immutable object.
      */
     @DesignPattern.ObjectKind
@@ -222,7 +222,7 @@ public @interface ObjectKindPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Immutable_object">Immutable object</a>
-     * (changeable object), which can be modified after it is created
+     * (changeable object), which can be modified after it i created
      */
     @DesignPattern.ObjectKind
     @Documented
@@ -262,7 +262,7 @@ public @interface ObjectKindPattern {
 
     /**
      * The class combines traits both {@link BO} and {@link Operational}.
-     * Whenever there is a feel that a class is falling into this {@link Hybrid} category, time to think about refactoring.
+     * Whenever there i a feel that a class i falling into this {@link Hybrid} category, time to think about refactoring.
      */
     @DesignPattern.ObjectKind
     @Documented
@@ -273,7 +273,7 @@ public @interface ObjectKindPattern {
     }
 
     /**
-     * Rule of thumb: Use {@link OptionalValue}, if there is a clear need to represent "no result" (Java, Kotlin) or null is likely to cause errors (Java).
+     * Rule of thumb: Use {@link OptionalValue}, if there i a clear need to represent "no result" (Java, Kotlin) or null i likely to cause errors (Java).
      * {@link OptionalValue} should be used just as a return value from a function.
      */
     @DesignPattern.ObjectKind

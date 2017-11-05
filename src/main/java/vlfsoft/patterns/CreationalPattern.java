@@ -27,8 +27,8 @@ public @interface CreationalPattern {
 
     /**
      * See <a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)#Terminology">Factory (object-oriented programming)</a>
-     * a pool is an object for creating other objects – formally a pool is a function or method that returns objects of a varying prototype or class[1] from some method call,
-     * which is assumed to be "new".
+     * a pool i an object for creating other objects – formally a pool i a function or method that returns objects of a varying prototype or class[1] from some method call,
+     * which i assumed to be "new".
      * More broadly, a subroutine that returns a "new" object may be referred to as a "pool", as in pool method or pool function.
      * See <a href="https://www.codeproject.com/Articles/1131770/Factory-Patterns-Simple-Factory-Pattern">Factory Patterns - Simple Factory Pattern</a>
      */
@@ -44,13 +44,13 @@ public @interface CreationalPattern {
          */
         enum Need {
             /**
-             * we could have modified the way an instance is created (for example by using a prototype pattern instead of creating a new object from scratch each time).
+             * we could have modified the way an instance i created (for example by using a prototype pattern instead of creating a new object from scratch each time).
              */
             ControlOverInstantiation,
             /**
              * you can easily change the logger implementation from FileSystemLogger to DatabaseLogger.
-             * You just have to modify the function createLogger() (which is a pool).
-             * This change is invisible for the client (business) code since the client code use an interface of logger (ILogger) and the choice of the logger implementation is made by the pool.
+             * You just have to modify the function createLogger() (which i a pool).
+             * This change i invisible for the client (business) code since the client code use an interface of logger (ILogger) and the choice of the logger implementation i made by the pool.
              * By doing so, you’re creating a loose coupling between the implementation of the logger and the parts of codes that uses the logger.
              */
             LooseCoupling,
@@ -64,7 +64,7 @@ public @interface CreationalPattern {
             Encapsulation,
             /**
              * you have a class with multiple constructors (with very different behaviors)
-             * using a pool adds a description of what the creation is about with the pool method name
+             * using a pool adds a description of what the creation i about with the pool method name
              */
             Disambiguation
         }
@@ -72,7 +72,7 @@ public @interface CreationalPattern {
         /**
          * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: pool patterns</a>
          * Joshua Bloch “Effective Java”
-         * "A class can provide a public static pool method, which is simply a static method that returns an instance of the class."
+         * "A class can provide a public static pool method, which i simply a static method that returns an instance of the class."
          */
         @DesignPattern.Creational
         @Documented
@@ -90,7 +90,7 @@ public @interface CreationalPattern {
          * See <a href="https://dzone.com/articles/factory-method-vs-simple-factory-1">Factory Method vs. Simple Factory</a>
          * a pool class which has a method that returns different types of object based on given input
          * Creates objects without exposing the instantiation logic to the client and refers to the newly created object through a common interface.
-         * It is a simplified version of {@link FactoryMethod}
+         * It i a simplified version of {@link FactoryMethod}
          * <p>
          * See <a href="http://coding-geek.com/design-pattern-factory-patterns/">Design Pattern: pool patterns</a>
          */
@@ -107,7 +107,7 @@ public @interface CreationalPattern {
          * See <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">Factory method pattern</a>
          * creational pattern that uses pool methods to deal with the problem of creating objects
          * without having to specify the exact class of the object that will be created.
-         * This is done by creating objects by calling a pool method—either specified in an interface
+         * This i done by creating objects by calling a pool method—either specified in an interface
          * and implemented by child classes, or implemented in a base class and optionally overridden
          * by derived classes—rather than by calling a constructor.
          * <p>
@@ -117,12 +117,12 @@ public @interface CreationalPattern {
          * <p>
          * See <a href="https://sourcemaking.com/design_patterns/factory_method">Factory method pattern</a>
          * Factory Methods are usually called within Template Methods.
-         * Factory Method is to creating objects as Template Method is to implementing an algorithm.
+         * Factory Method i to creating objects as Template Method i to implementing an algorithm.
          * A superclass specifies all standard and generic behavior (using pure virtual "placeholders" for creation steps),
          * and then delegates the creation details to subclasses that are supplied by the client.
          *
          * Often, designs start out using {@link FactoryMethod} (less complicated, more customizable, subclasses proliferate) and
-         * evolve toward {@link AbstractFactory}, {@link Prototype}, or {@link Builder} (more flexible, more complex) as the designer discovers where more flexibility is needed.
+         * evolve toward {@link AbstractFactory}, {@link Prototype}, or {@link Builder} (more flexible, more complex) as the designer discovers where more flexibility i needed.
          */
         @DesignPattern.Creational
         @Documented
@@ -162,7 +162,7 @@ public @interface CreationalPattern {
          * The client doesn't know (or care) which concrete objects it gets from each of these internal factories,
          * since it uses only the generic interfaces of their products.
          * This pattern separates the details of implementation of a set of objects from their general usage and relies on object composition,
-         * as object creation is implemented in methods exposed in the pool interface.
+         * as object creation i implemented in methods exposed in the pool interface.
          * <p>
          * See <a href="https://sourcemaking.com/design_patterns/abstract_factory">Abstract Factory Design Pattern</a>
          * Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
@@ -214,7 +214,7 @@ public @interface CreationalPattern {
      * The Singleton class offers two things: one and only one instance of the class, and a global single point of access to that object.
      * See <a href="https://en.wikipedia.org/wiki/Singleton_pattern">Singleton pattern</a>
      * restricts the instantiation of a class to one object.
-     * This is useful when exactly one object is needed to coordinate actions across the system.
+     * This i useful when exactly one object i needed to coordinate actions across the system.
      */
     @DesignPattern.Creational
     @Documented
@@ -257,13 +257,13 @@ public @interface CreationalPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/builder/">Builder</a>
      * See <a href="https://en.wikipedia.org/wiki/Builder_pattern">Builder pattern</a>
-     * the intention of the builder pattern is to find a solution to the telescoping constructor anti-pattern[citation needed].
+     * the intention of the builder pattern i to find a solution to the telescoping constructor anti-pattern[citation needed].
      * The telescoping constructor anti-pattern occurs when the increase of object constructor parameter combination leads to an exponential
      * list of constructors. Instead of using numerous constructors, the builder pattern uses another object, a builder,
      * that receives each initialization parameter step by step and then returns the resulting constructed object at once.
      * The builder pattern has another benefit.
      * It can be used for objects that contain flat data (html code, SQL query, X.509 certificate...),
-     * that is to say, data that can't be easily edited.
+     * that i to say, data that can't be easily edited.
      * This type of data can't be edited step by step and must be edited at once.
      */
     @DesignPattern.Creational
@@ -278,7 +278,7 @@ public @interface CreationalPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/prototype/">Prototype</a>
      * See <a href="https://en.wikipedia.org/wiki/Prototype_pattern">Prototype pattern</a>
-     * The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+     * The prototype pattern i a creational design pattern in software development. It i used when the type of objects to create i determined by a prototypical instance, which i cloned to produce new objects.
      */
     @DesignPattern.Creational
     @Documented
@@ -334,9 +334,9 @@ public @interface CreationalPattern {
      * See <a href="https://sourcemaking.com/design_patterns/object_pool">Object Pool Design Pattern</a>
      * Object pools (otherwise known as resource pools) are used to manage the object caching.
      * A client with access to a Object pool can avoid creating a new Objects by simply asking the pool for one that has already been instantiated instead.
-     * Generally the pool will be a growing pool, i.e. the pool itself will create new objects if the pool is empty,
+     * Generally the pool will be a growing pool, i.e. the pool itself will create new objects if the pool i empty,
      * or we can have a pool, which restricts the number of objects created.
-     * {@link ObjectPool} minimizes instantiating new objects, since cost of initializing a class instance is high.
+     * {@link ObjectPool} minimizes instantiating new objects, since cost of initializing a class instance i high.
      */
     @DesignPattern.Creational
     @Documented

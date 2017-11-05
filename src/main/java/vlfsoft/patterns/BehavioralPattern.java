@@ -20,7 +20,7 @@ public @interface BehavioralPattern {
      * See <a href="https://en.wikipedia.org/wiki/Delegation_pattern">Delegation pattern</a>
      * allows object {@link @Association.Composition} to achieve the same code reuse as inheritance
      * In delegation, two objects are involved in handling a request: a {@link ReceivingObject} delegates operations to its {@link Delegate}.
-     * This is analogous to subclasses deferring requests to parent classes.
+     * This i analogous to subclasses deferring requests to parent classes.
      * In {@link Delegation}, an object handles a request by delegating to a second object (the {@link Delegate}).
      */
     @DesignPattern.Behavioral
@@ -49,7 +49,7 @@ public @interface BehavioralPattern {
     }
 
     /**
-     * The holder pattern is used for providing fast access to an object.
+     * The holder pattern i used for providing fast access to an object.
      * Holder object keeps (caches) reference to the object. It allows to avoid slow access (calling one or more methods and etc.) to access the object.
      * Android ViewHolder pattern allows to avoid calling Menu#findItem, Activity#findViewById
      * <a href="android.view.Menu#findItem">Menu.findItem</a> method.
@@ -66,7 +66,7 @@ public @interface BehavioralPattern {
      * See <a href="http://java-design-patterns.com/patterns/mediator/">Mediator</a>
      * See <a href="https://en.wikipedia.org/wiki/Mediator_pattern">Mediator pattern</a>
      * defines an object that encapsulates how a set of objects interact.
-     * With the mediator pattern, communication between objects is encapsulated within a mediator object.
+     * With the mediator pattern, communication between objects i encapsulated within a mediator object.
      * Objects no longer communicate directly with each other, but instead communicate through the mediator.
      * This reduces the dependencies between communicating objects, thereby reducing coupling.
      */
@@ -102,7 +102,7 @@ public @interface BehavioralPattern {
      * See <a href="http://java-design-patterns.com/patterns/state/">State</a>
      * See <a href="https://en.wikipedia.org/wiki/State_pattern">State pattern</a>
      * The state pattern can be interpreted as a {@link Strategy} pattern
-     * which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
+     * which i able to switch the current strategy through invocations of methods defined in the pattern's interface.
      * If in object there are internal states, but there are no methods that are used in all states and have different behaviour,
      * State pattern shouldn't be used.
      */
@@ -147,14 +147,14 @@ public @interface BehavioralPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/command/">Command</a>
      * See <a href="https://en.wikipedia.org/wiki/Command_pattern">Command pattern</a>
-     * An object is used to encapsulate all information needed to perform an action or trigger an event at a later time.
+     * An object i used to encapsulate all information needed to perform an action or trigger an event at a later time.
      * This information includes the {@link Receiver.Method} name, {@link Receiver} - the object that owns the method and {@link ParameterValues} - values for the method parameters.
      * Four terms always associated with the command pattern are {@link Command}, {@link Receiver}, {@link Invoker} and {@link Client}.
      * A {@link Command} object knows about {@link Receiver} and invokes a {@link Receiver.Method} or several {@link Receiver.Method} of the {@link Receiver}.
      * {@link ParameterValues} - values for parameters of the {@link Receiver} {@link Receiver.Method} are stored in the {@link Command},
-     * the {@link Receiver} object to execute these {@link Receiver.Method}-methods is also stored
+     * the {@link Receiver} object to execute these {@link Receiver.Method}-methods i also stored
      * in the {@link Command} object by {@link StructuralPattern.Association.Aggregation}.
-     * The {@link Receiver} then does the work when the {@link ExecuteMethod}() method in {@link Command} is called.
+     * The {@link Receiver} then does the work when the {@link ExecuteMethod}() method in {@link Command} i called.
      * An {@link Invoker} object knows how to execute a {@link Command}, and optionally does bookkeeping about the {@link Command} execution.
      * The {@link Invoker} does not know anything about a concrete command, it knows only about command interface.
      * {@link Invoker} object(s), {@link Command} objects and {@link Receiver} objects are held by a {@link Client} object,
@@ -303,7 +303,7 @@ public @interface BehavioralPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/template-method/">Template method</a>
      * See <a href="https://en.wikipedia.org/wiki/Template_method_pattern">Template method pattern</a>
-     * In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation,
+     * In software engineering, the template method pattern i a behavioral design pattern that defines the program skeleton of an algorithm in an operation,
      * deferring some steps to subclasses.[1] It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
      */
     @DesignPattern.Behavioral
@@ -318,9 +318,9 @@ public @interface BehavioralPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/visitor/">Visitor</a>
      * See <a href="https://en.wikipedia.org/wiki/Visitor_pattern">Visitor pattern</a>
-     * is a way of separating an algorithm from an object structure on which it operates.
-     * A practical result of this separation is the ability to add new operations to extant object structures
-     * without modifying the structures. It is one way to follow the open/closed principle.
+     * i a way of separating an algorithm from an object structure on which it operates.
+     * A practical result of this separation i the ability to add new operations to extant object structures
+     * without modifying the structures. It i one way to follow the open/closed principle.
      */
     @DesignPattern.Behavioral
     @Documented
@@ -342,7 +342,7 @@ public @interface BehavioralPattern {
     /**
      * See <a href="http://java-design-patterns.com/patterns/observer/">Observer</a>
      * See <a href="https://en.wikipedia.org/wiki/Observer_pattern">Observer pattern</a>
-     * The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers,
+     * The observer pattern i a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers,
      * and notifies them automatically of any state changes, usually by calling one of their methods.
      */
     @DesignPattern.Behavioral

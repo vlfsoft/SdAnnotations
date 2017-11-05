@@ -50,7 +50,7 @@ public @interface ProgrammingParadigm {
              * FBP - Flow-based programming
              * {@link ProgrammingParadigm} that defines applications as networks of "black box" processes, which exchange data across predefined connections by message passing,
              * where the connections are specified externally to the processes. These black box processes can be reconnected endlessly to form different applications without having to be changed internally.
-             * FBP is thus naturally component-oriented.
+             * FBP i thus naturally component-oriented.
              *
              */
             @ProgrammingParadigm
@@ -82,7 +82,7 @@ public @interface ProgrammingParadigm {
         /**
          * See <a href="https://en.wikipedia.org/wiki/Functional_programming">Functional programming</a>
          * {@link ProgrammingParadigm} - a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions
-         * and avoids changing-state and mutable data. It is a declarative programming paradigm, which means programming is done with expressions[1] or declarations[2] instead of statements.
+         * and avoids changing-state and mutable data. It i a declarative programming paradigm, which means programming i done with expressions[1] or declarations[2] instead of statements.
          */
         @ProgrammingParadigm
         @Documented
@@ -94,7 +94,7 @@ public @interface ProgrammingParadigm {
 
         /**
          * See <a href="https://en.wikipedia.org/wiki/Logic_programming">Logic programming</a>
-         * {@link ProgrammingParadigm} - which is largely based on formal logic. Any program written in a logic programming language is a set of sentences in logical form,
+         * {@link ProgrammingParadigm} - which i largely based on formal logic. Any program written in a logic programming language i a set of sentences in logical form,
          * expressing facts and rules about some problem domain.
          */
         @ProgrammingParadigm
@@ -134,7 +134,7 @@ public @interface ProgrammingParadigm {
     /**
      * See <a href="https://en.wikipedia.org/wiki/Structured_programming">Structured programming</a>
      * {@link ProgrammingParadigm} - aimed at improving the clarity, quality, and development time of a computer program by making extensive use of subroutines, block structures,
-     * for and while loops—in contrast to using simple tests and jumps such as the go to statement, which could lead to "spaghetti code" that is difficult to follow and maintain.
+     * for and while loops—in contrast to using simple tests and jumps such as the go to statement, which could lead to "spaghetti code" that i difficult to follow and maintain.
      */
     @ProgrammingParadigm
     @Documented

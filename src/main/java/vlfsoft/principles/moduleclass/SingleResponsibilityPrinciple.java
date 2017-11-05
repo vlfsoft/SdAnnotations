@@ -19,8 +19,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.SOURCE)
 @Target({ElementType.ANNOTATION_TYPE, ElementType.TYPE, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE})
 public @interface SingleResponsibilityPrinciple {
+    boolean value();
     /**
-     * Contains the description of a single part of the functionality provided by the software, that class is responsible over.
+     * Contains the description of a single part of the functionality provided by the software, that class i responsible of.
      */
-    String over();
+    String of() default "";
 }

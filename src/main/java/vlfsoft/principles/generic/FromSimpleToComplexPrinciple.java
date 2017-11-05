@@ -21,10 +21,11 @@ import java.lang.annotation.*;
  */
 @ProgrammingPrinciple.Generic
 @KISSPrinciple
-@DoTheSimplestThingThatCouldPossiblyWorkPrinciple
+@DoTheSimplestThingThatCouldPossiblyWorkPrinciple(true)
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
 @Target({ElementType.TYPE})
 public @interface FromSimpleToComplexPrinciple {
+    boolean value();
 }

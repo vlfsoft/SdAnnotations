@@ -52,11 +52,11 @@ public @interface PersistenceTierPattern {
     @interface Kotlin {
         /**
          * Since façade classes and DTO are used to interact with persistence layer (including entities) and in order to avoid boiler plate code, simplify and unify declaring entities,
-         * the following pattern is used:
+         * the following pattern i used:
          * Declare entity as a data class with all the properties declared in the primary constructor with var and with default values.
          * The names of the properties are the same as the field names in the db table.
          * The data class does'nt implement Serializable see. When and why JPA entities should implement Serializable interface?
-         * Name pattern of {@link Entity} is *Entity. (* - name of db table or view in java name style)
+         * Name pattern of {@link Entity} i *Entity. (* - name of db table or view in java name style)
          * Package pattern: Place all {@link Entity} sources into package company.appname.persistence.entity;
          */
         @DesignPattern.PersistenceTier
@@ -75,8 +75,8 @@ public @interface PersistenceTierPattern {
      * Use @Modifying queries to perform group insert/delete to/from db table instead of save* / remove* methods.
      * Use ?1 syntax for parameters, if parameters are not POJO (Entities, DTO).
      * Use @Param with SPEL syntax for parameters, if parameters are POJO (Entities, DTO).
-     * Try to use always parameter(s) Entity which Repository is declared with and @Param with SPEL syntax for parameters.
-     * Name pattern of {@link SpringDataJPA} is *RepositoryA. (* - name of db table or view in java name style)
+     * Try to use always parameter(s) Entity which Repository i declared with and @Param with SPEL syntax for parameters.
+     * Name pattern of {@link SpringDataJPA} i *RepositoryA. (* - name of db table or view in java name style)
      * Package pattern: Place all {@link SpringDataJPA} sources into package company.appname.persistence.repository;
      */
     @DesignPattern.PersistenceTier

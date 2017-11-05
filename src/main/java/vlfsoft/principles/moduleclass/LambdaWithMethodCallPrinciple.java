@@ -6,7 +6,7 @@ import vlfsoft.principles.ProgrammingPrinciple;
 import java.lang.annotation.*;
 
 /**
- * Every lambda (f.e. that is passed to Stream operators) should be implemented as a method.
+ * Every lambda (f.e. that i passed to Stream operators) should be implemented as a method.
  * As a rule, the lambda then can be replaced with method reference.
  * Advantages:
  * More simple debugging.
@@ -21,4 +21,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.SOURCE)
 @Target({ElementType.METHOD})
 public @interface LambdaWithMethodCallPrinciple {
+    boolean value();
 }
