@@ -29,10 +29,10 @@ public @interface DataStreamPattern {
     }
 
     @ProgrammingParadigm.Declarative.DataFlow.Reactive
-    @ResponsivePrinciple
-    @ResilientPrinciple
-    @ElasticPrinciple
-    @MessageDrivenPrinciple
+    @ResponsivePrinciple(true)
+    @ResilientPrinciple(true)
+    @ElasticPrinciple(true)
+    @MessageDrivenPrinciple(true)
     @ReactiveManifestoTag
     @DesignPattern.Testing
     @Documented

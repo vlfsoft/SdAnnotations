@@ -20,7 +20,7 @@ import java.lang.annotation.*;
  * Hint: To make experiments with different options use comments, copy of source files, git branches and etc.
  */
 @ProgrammingPrinciple.Generic
-@KISSPrinciple
+@KISSPrinciple(true)
 @DoTheSimplestThingThatCouldPossiblyWorkPrinciple(true)
 @Documented
 @Inherited
