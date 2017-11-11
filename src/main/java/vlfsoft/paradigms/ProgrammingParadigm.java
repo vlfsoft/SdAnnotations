@@ -5,6 +5,8 @@ import vlfsoft.tags.ReactiveManifestoTag;
 import java.lang.annotation.*;
 
 /**
+ *
+ * See <a href="https://en.wikipedia.org/wiki/Comparison_of_programming_paradigms">Comparison of programming paradigms</a>
  * See <a href="https://en.wikipedia.org/wiki/Programming_paradigm">Programming paradigm</a>
  * Way to classify programming languages based on their features. Languages can be classified into multiple paradigms.
  * Common programming paradigms include: <ul>

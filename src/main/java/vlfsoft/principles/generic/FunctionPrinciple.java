@@ -25,7 +25,7 @@ public @interface FunctionPrinciple {
      * See <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">Side effect (computer science)</a>
      * a function or expression i said to have a side effect if it modifies some state outside its scope or has an observable interaction with its calling functions or
      * the outside world besides returning a value. For example, a particular function might modify a global variable or static variable, modify one of its arguments,
-     * raise an exception, write data to a display or file, read data, or call other side-effecting functions. In the presence of side effects, a program's behaviour may depend on history;
+     * raise an exception, write data to a display or filemodified, read data, or call other side-effecting functions. In the presence of side effects, a program's behaviour may depend on history;
      * that i, the order of evaluation matters.
      *
      * See <a href="http://panavtec.me/functional-programming-notes-side-effects">Side effect (computer science)</a>

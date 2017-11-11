@@ -1,5 +1,6 @@
 package vlfsoft.patterns;
 
+import vlfsoft.paradigms.ProgrammingParadigm;
 import vlfsoft.patterns.CreationalPattern.Factory.AbstractFactory;
 import vlfsoft.patterns.CreationalPattern.Singleton;
 
@@ -61,8 +62,8 @@ public @interface SpringSpecificPattern {
      * - It adds boilerplate code (declaring @Bean {@link CreationalPattern.Factory.FactoryMethod} and its parameters) in {@link JavaConfig}.
      * Name pattern of {@link JavaConfig} i *Config.
      * <p>
-     * Rule of thumb:
-     * Start to declare all the @Bean {@link CreationalPattern.Factory.FactoryMethod} methods in single {@link JavaConfig} class named f.e. MainAppConfig;
+     * Rule of thumb: Following the {@link vlfsoft.principles.generic.DoTheSimplestThingThatCouldPossiblyWorkPrinciple},
+     * start to declare all the @Bean {@link CreationalPattern.Factory.FactoryMethod} methods in single {@link JavaConfig} class named f.e. MainAppConfig;
      * If it becomes difficult to work with single {@link JavaConfig} class,
      * split the original {@link JavaConfig} class into several smaller ones by logical areas (modules, packages, etc.).
      * <p>
@@ -84,8 +85,8 @@ public @interface SpringSpecificPattern {
         /**
          * It's used to create beans on demand with help of Spring ApplicationContext.
          * <p>
-         * Rule of thumb:
-         * Start to declare all the {@link CreationalPattern.Factory.FactoryMethod} @Bean and non-@Bean providing methods
+         * Rule of thumb: Following the {@link vlfsoft.principles.generic.DoTheSimplestThingThatCouldPossiblyWorkPrinciple},
+         * start to declare all the {@link CreationalPattern.Factory.FactoryMethod} @Bean and non-@Bean providing methods
          * in single {@link Singleton} {@link AbstractFactory} interface/class named f.e. MainAppConfigFactory*
          * MainAppConfigFactory i injected with ApplicationContext mApplicationContext to support {@link GetBeanFactoryMethod}
          * <p>
@@ -137,7 +138,7 @@ public @interface SpringSpecificPattern {
      * Dependency injection i one form of the broader technique of inversion of control. <a href="https://en.wikipedia.org/wiki/Inversion_of_control">Inversion of control</a>
      * Rather than low level code calling up to high level code, high level code can receive lower level code that it can call down to.
      * This inverts the typical control pattern seen in procedural programming.
-     *
+     * <p>
      * http://www.baeldung.com/spring-interview-questions
      * The recommended approach i to use {@link Constructor} arguments for mandatory dependencies and setters for optional ones.
      * {@link Constructor} {@link Injection} allows injecting values to immutable fields and makes testing easier.
@@ -153,7 +154,7 @@ public @interface SpringSpecificPattern {
         /**
          * Injecting dependencies in constructor advantages:
          * - It i simple (if it i necessary) to migrate from SCOPE_SINGLETON to to create instances of the class with factory to launch several class instances in parallel.
-         * - It i simple to declare Bean with JavaConfig method instead of using annotations @Service ...
+         * - It i simple to declare Bean with JavaConfig method instead of using annotation @Service ...
          * - It i easier to determine (read from source) all the dependencies required by this class, since all of the dependencies are in one place (parameters list of constructor)
          * - It i easier to replace class with mock in tests even without (mockito or powermock): just declare JavaConfig in Test class and pass to constructor mock.
          * - It i possible to declare in:
@@ -199,5 +200,50 @@ public @interface SpringSpecificPattern {
 
     }
 
+
+    /**
+     * {@link RestApiController} binds service methods to Url paths, builds.
+     */
+    @ArchitecturalPattern.ModelViewController.Controller
+    @DesignPattern.Architectural
+    @Documented
+    @Inherited
+    @Retention(RetentionPolicy.SOURCE)
+    @Target({ElementType.ANNOTATION_TYPE})
+    @interface RestApiController {
+
+        /**
+         * RequestMapping based annotations are used to binds service methods to Url paths.
+         * Rule of thumb: Following the {@link vlfsoft.principles.generic.DoTheSimplestThingThatCouldPossiblyWorkPrinciple},
+         * start to declare all the methods, annotated with {@link RequestMapping}
+         * in single class named f.e. MainAppController
+         * If it becomes difficult to work with single MainAppController class,
+         * split the original MainAppController class into several smaller ones by logical areas (modules, packages, etc.).
+         */
+        @ProgrammingParadigm.Imperative
+        @ArchitecturalPattern.ModelViewController.Controller
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.METHOD})
+        @interface RequestMapping {
+        }
+
+        /**
+         * The function binds service methods to Url paths, builds and return RouterFunction.
+         * start to declare the method, annotated with {@link RouterFunction}
+         * in single class/filemodified named f.e. MainAppController
+         */
+        @ProgrammingParadigm.Declarative.Functional
+        @ArchitecturalPattern.ModelViewController.Controller
+        @DesignPattern.Architectural
+        @Documented
+        @Inherited
+        @Retention(RetentionPolicy.SOURCE)
+        @Target({ElementType.TYPE, ElementType.METHOD})
+        @interface RouterFunction {
+        }
+
+    }
 
 }

@@ -286,7 +286,7 @@ public @interface ArchitecturalPattern {
         @Documented
         @Inherited
         @Retention(RetentionPolicy.SOURCE)
-        @Target({ElementType.TYPE, ElementType.METHOD})
+        @Target({ElementType.ANNOTATION_TYPE, ElementType.TYPE, ElementType.METHOD})
         @interface Controller {
         }
 

@@ -2,6 +2,7 @@ package vlfsoft.patterns;
 
 import vlfsoft.paradigms.ProgrammingParadigm;
 import vlfsoft.principles.ProgrammingPrinciple;
+import vlfsoft.principles.intermoduleclass.CompositionOverInheritancePrinciple;
 import vlfsoft.tags.GOFTag;
 
 import java.lang.annotation.*;
@@ -52,7 +53,7 @@ public @interface StructuralPattern {
      * See <a href="http://java-design-patterns.com/patterns/proxy/">Proxy</a>
      * See <a href="https://en.wikipedia.org/wiki/Proxy_pattern">Proxy_pattern</a>
      * a class functioning as an interface to something else.
-     * The proxy could interface to anything: a network connection, a large object in memory, a file, or some other resource that i expensive or impossible to duplicate.
+     * The proxy could interface to anything: a network connection, a large object in memory, a filemodified, or some other resource that i expensive or impossible to duplicate.
      * In short, a proxy i a wrapper or agent object that i being called by the client to access the real serving object behind the scenes.
      * Use of the proxy can simply be forwarding to the {@link RealObject}, or can provide additional logic. In the proxy, extra functionality can be provided,
      * for example caching when operations on the {@link RealObject} are resource intensive, or checking preconditions before operations on the real object are invoked.
@@ -577,6 +578,7 @@ public @interface StructuralPattern {
          * {@link Composition} i a kind of {@link Association} where the composite object has sole responsibility for the disposition of the component parts.
          * The relationship between the composite and the component i a strong “has a” relationship, as the composite object takes ownership of the component.
          */
+        @CompositionOverInheritancePrinciple(true)
         @DesignPattern.Structural
         @Documented
         @Inherited

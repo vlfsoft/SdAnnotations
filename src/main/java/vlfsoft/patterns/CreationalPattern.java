@@ -308,10 +308,10 @@ public @interface CreationalPattern {
     }
 
     /**
+     * The {@link UtilityClass} serves to to provide only static methods or to enclose other classes or interfaces.
      * Instance of class can't be created with new.
      * Instance of class can't be created with @FactoryMethod.
      * Empty private constructor prevent creating instances of class with new.
-     * contains only static methods.
      */
     @DesignPattern.Creational
     @Documented
