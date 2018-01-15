@@ -13,6 +13,6 @@ import java.lang.annotation.*;
 @SoftwareDevelopmentConcept
 @Repeatable(TechnicalDebts.class)
 public @interface TechnicalDebt {
-    String value();
+    String[] value();
     String due() default "";
 }

@@ -1,7 +1,5 @@
 package vlfsoft.paradigms;
 
-import vlfsoft.tags.ReactiveManifestoTag;
-
 import java.lang.annotation.*;
 
 /**
@@ -166,8 +164,20 @@ public @interface ProgrammingParadigm {
         @Retention(RetentionPolicy.SOURCE)
         @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
         @interface Recursion {
-
             /**
+             * We refer to a recursive function as {@link Tail}-recursion when the recursive call is the last thing that function executes. Otherwise, it’s known as {@link Head}-recursion.
+             * @return one of {@link Tail}, {@link Head}
+             */
+            Class [] value() default {};
+
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({})
+            @interface Tail {}
+            @Retention(RetentionPolicy.SOURCE)
+            @Target({})
+            @interface Head {}
+
+                /**
              * See <a href="https://en.wikipedia.org/wiki/Recursion_(computer_science)#Recursive_procedures">Recursive procedures</a>
              */
             @Documented

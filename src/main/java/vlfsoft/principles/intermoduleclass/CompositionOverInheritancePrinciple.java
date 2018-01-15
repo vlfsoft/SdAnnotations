@@ -14,7 +14,7 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.ANNOTATION_TYPE, ElementType.TYPE, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE})
+@Target({ElementType.ANNOTATION_TYPE})
 public @interface CompositionOverInheritancePrinciple {
     boolean value();
 }

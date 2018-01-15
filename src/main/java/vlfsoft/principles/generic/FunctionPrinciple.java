@@ -1,7 +1,7 @@
 package vlfsoft.principles.generic;
 
 import vlfsoft.paradigms.ProgrammingParadigm;
-import vlfsoft.patterns.ObjectKindPattern;
+import vlfsoft.patterns.enterprise.ddd.DDD.Mutable;
 import vlfsoft.principles.ProgrammingPrinciple;
 
 import java.lang.annotation.*;
@@ -49,7 +49,7 @@ public @interface FunctionPrinciple {
      *  <li> The function always evaluates the same result value given the same argument value(s).
      *  The function result value cannot depend on any hidden information or state that may change while program execution proceeds or between different executions of the program,
      *  nor can it depend on any external input from I/O devices
-     *  <li> Evaluation of the result does not cause any semantically observable side effect or output, such as mutation of {@link ObjectKindPattern.Mutable} objects or output to I/O devices
+     *  <li> Evaluation of the result does not cause any semantically observable side effect or output, such as mutation of {@link Mutable} objects or output to I/O devices
      *  <ul/>
      *
      *  See <a href="https://en.wikipedia.org/wiki/Referential_transparency">Referential transparency</a>
@@ -107,7 +107,7 @@ public @interface FunctionPrinciple {
     @Documented
     @Inherited
     @Retention(RetentionPolicy.SOURCE)
-    @Target({ElementType.ANNOTATION_TYPE, ElementType.TYPE, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE})
+    @Target({ElementType.ANNOTATION_TYPE})
     @interface Composition {
     }
 }
